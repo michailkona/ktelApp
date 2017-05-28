@@ -90,8 +90,9 @@
                         
                         
                         <h:outputText value="ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ" />
-                        <h:inputText  id="busArithmosTheseon" value="#{busManagedBean.busToInsert.busArithmosTheseon}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:inputMask  id="busArithmosTheseon" value="#{busManagedBean.busToInsert.busArithmosTheseon}"
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"
+                                     mask="99"/>
                        
                         
                         <h:outputText value="ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ" />
@@ -100,8 +101,9 @@
                         
                         
                         <h:outputText value="ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ" />
-                        <h:inputText  id="busXoritikotitaDematon" value="#{busManagedBean.busToInsert.busXoritikotitaDematon}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:inputMask  id="busXoritikotitaDematon" value="#{busManagedBean.busToInsert.busXoritikotitaDematon}"
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"
+                                     mask="99"/>
                         
                         
                         
