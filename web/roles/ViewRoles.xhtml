@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl id="msgs"  showDetail="false"/>
+
+            <p:dataTable id="datatable" var="role" 
+                         value="#{rolesManagedBean.roles}"
+                         widgetVar="roleTable"
+                         emptyMessage="Δεν υπάρχουν εγγραφές"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         rowIndexVar="index"
+                         rowKey="#{role.roleId}"
+                         selection="#{rolesManagedBean.selectedRole}"
+                         selectionMode="single"
+                         filteredValue="#{rolesManagedBean.filteredRolesList}">
+
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="ΑΝΑΖΗΤΗΣΗ:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('roleTable').filter()" style="width:300px" placeholder="ΕΙΣΑΓΕΤΕ ΛΕΞΗ ΑΝΑΖΗΤΗΣΗΣ"/>
+                    </p:outputPanel>
+                </f:facet>
+
+                <p:column>
+                    <f:facet name="header"> Α/Α</f:facet>#{index+1}
+                </p:column>
+
+                <p:column headerText="ΚΩΔΙΚΟΣ" filterBy="#{role.roleId}">
+                    <h:outputText value="#{role.roleId}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="ΟΝΟΜΑ" filterBy="#{role.roleName}">
+                    <h:outputText value="#{role.roleName}"></h:outputText>
+                </p:column>
+
+               
+                <f:facet name="footer">
+                    
+                     <p:commandButton process="datatable" update=":form:View" 
+                                     icon="ui-icon-search" value="ΠΡΟΒΟΛΗ" oncomplete="PF('ViewDialog').show()" />
+                     
+                    <p:commandButton process="datatable" update=":form:Insert" 
+                                     icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" oncomplete="PF('InsertDialog').show()" />
+                    
+                     <p:commandButton process="datatable" update=":form:Delete" 
+                                     icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" oncomplete="PF('DeleteDialog').show()" />
+                    
+                   
+
+                </f:facet>
+
+
+            </p:dataTable>
+            
+            <!-- παραθυρο για εισαγωγη φορμας-->
+            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Insert" style="text-align:center;">
+                    
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+
+                        <h:outputText value="ΟΝΟΜΑ" />
+                        <h:inputText  id="roleName" value="#{rolesManagedBean.rolesToInsert.roleName}"
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="roleName" />
+                      
+                                 
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{rolesManagedBean.insert()}" 
+                                         oncomplete="PF('InsertDialog').hide()" validateClient="true"/>
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+            
+            <!-- παραθυρο για προβολη -->
+            <p:dialog header="ΠΡΟΒΟΛΗ" widgetVar="ViewDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="View" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+                        <h:outputText value="ΟΝΟΜΑ" />
+                        <h:outputText value="#{rolesManagedBean.selectedRole.roleName}" />
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+            
+            
+            <!-- παραθυρο για διαγραφη -->
+             <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Delete" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+
+                        <h:outputText value="ΟΝΟΜΑ" />
+                        <h:outputText value="#{rolesManagedBean.selectedRole.roleName}" />
+
+                        
+                        
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" actionListener="#{rolesManagedBean.delete()}" 
+                                         oncomplete="PF('DeleteDialog').hide()" />
+                        
+                        
+                        
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+        </h:form>
+    </h:body>
+</html>
+

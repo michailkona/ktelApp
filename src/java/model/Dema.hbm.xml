@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28 ??? 2017 4:28:42 ?? by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Dema" table="dema" catalog="kteldb" optimistic-lock="version">
+        <composite-id name="id" class="model.DemaId">
+            <key-property name="demaId" type="int">
+                <column name="dema_id" />
+            </key-property>
+            <key-property name="dromologioDromologioId" type="int">
+                <column name="dromologio_dromologio_id" />
+            </key-property>
+            <key-property name="dromologioCityCityIdAnaxorisi" type="int">
+                <column name="dromologio_city_city_id_anaxorisi" />
+            </key-property>
+            <key-property name="dromologioCityCityIdAfiksi" type="int">
+                <column name="dromologio_city_city_id_afiksi" />
+            </key-property>
+            <key-property name="dromologioBusBusId" type="int">
+                <column name="dromologio_bus_bus_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="dromologio" class="model.Dromologio" update="false" insert="false" fetch="select">
+            <column name="dromologio_dromologio_id" not-null="true" />
+            <column name="dromologio_city_city_id_anaxorisi" not-null="true" />
+            <column name="dromologio_city_city_id_afiksi" not-null="true" />
+            <column name="dromologio_bus_bus_id" not-null="true" />
+        </many-to-one>
+        <property name="demaDateApostoli" type="date">
+            <column name="dema_date_apostoli" length="10" not-null="true" />
+        </property>
+        <property name="demaLastnameApostolea" type="string">
+            <column name="dema_lastname_apostolea" length="45" not-null="true" />
+        </property>
+        <property name="demaFirstnameApostolea" type="string">
+            <column name="dema_firstname_apostolea" length="45" not-null="true" />
+        </property>
+        <property name="demaLastnameParalipti" type="string">
+            <column name="dema_lastname_paralipti" length="45" not-null="true" />
+        </property>
+        <property name="demaFirstnameParalipti" type="string">
+            <column name="dema_firstname_paralipti" length="45" not-null="true" />
+        </property>
+        <property name="demaTemaxia" type="int">
+            <column name="dema_temaxia" not-null="true" />
+        </property>
+        <property name="demaBaros" type="string">
+            <column name="dema_baros" length="45" not-null="true" />
+        </property>
+        <property name="demaPrice" type="string">
+            <column name="dema_price" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

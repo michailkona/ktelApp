@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28 ??? 2017 4:28:42 ?? by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Bus" table="bus" catalog="kteldb" optimistic-lock="version">
+        <id name="busId" type="java.lang.Integer">
+            <column name="bus_id" />
+            <generator class="identity" />
+        </id>
+        <property name="busArithmosKikloforias" type="string">
+            <column name="bus_arithmos_kikloforias" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="busArithmosTheseon" type="int">
+            <column name="bus_arithmos_theseon" not-null="true" />
+        </property>
+        <property name="busTypebus" type="string">
+            <column name="bus_typebus" length="45" not-null="true" />
+        </property>
+        <property name="busXoritikotitaDematon" type="string">
+            <column name="bus_xoritikotita_dematon" length="45" not-null="true" />
+        </property>
+        <set name="busdrivers" table="busdriver" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="bus_bus_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Busdriver" />
+        </set>
+        <set name="dromologios" table="dromologio" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="bus_bus_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Dromologio" />
+        </set>
+    </class>
+</hibernate-mapping>

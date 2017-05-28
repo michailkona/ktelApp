@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28 ??? 2017 4:28:42 ?? by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Roles" table="roles" catalog="kteldb" optimistic-lock="version">
+        <id name="roleId" type="java.lang.Integer">
+            <column name="role_id" />
+            <generator class="identity" />
+        </id>
+        <property name="roleName" type="string">
+            <column name="role_name" length="45" not-null="true" />
+        </property>
+        <set name="userses" table="users" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="roles_role_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Users" />
+        </set>
+    </class>
+</hibernate-mapping>

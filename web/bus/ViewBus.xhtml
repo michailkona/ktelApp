@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl id="msgs"  showDetail="false"/>
+
+            <p:dataTable id="datatable" var="bus" 
+                         value="#{busManagedBean.bus}"
+                         widgetVar="busTable"
+                         emptyMessage="Δεν υπάρχουν εγγραφές"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         rowIndexVar="index"
+                         rowKey="#{bus.busId}"
+                         selection="#{busManagedBean.selectedBus}"
+                         selectionMode="single"
+                         filteredValue="#{busManagedBean.filteredBusList}">
+
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="ΑΝΑΖΗΤΗΣΗ:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('busTable').filter()" style="width:300px" placeholder="ΕΙΣΑΓΕΤΕ ΛΕΞΗ ΑΝΑΖΗΤΗΣΗΣ"/>
+                    </p:outputPanel>
+                </f:facet>
+
+                <p:column>
+                    <f:facet name="header"> Α/Α</f:facet>#{index+1}
+                </p:column>
+
+                <p:column headerText="ΚΩΔΙΚΟΣ" filterBy="#{bus.busId}">
+                    <h:outputText value="#{bus.busId}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="busArithmosKikloforias" filterBy="#{bus.busArithmosKikloforias}">
+                    <h:outputText value="#{bus.busArithmosKikloforias}"></h:outputText>
+                </p:column>
+                
+                <p:column headerText="busArithmosTheseon" filterBy="#{bus.busArithmosTheseon}">
+                    <h:outputText value="#{bus.busArithmosTheseon}"></h:outputText>
+                </p:column>
+                
+                <p:column headerText="busTypebus" filterBy="#{bus.busTypebus}">
+                    <h:outputText value="#{bus.busTypebus}"></h:outputText>
+                </p:column>
+                
+                <p:column headerText="busXoritikotitaDematon" filterBy="#{bus.busXoritikotitaDematon}">
+                    <h:outputText value="#{bus.busXoritikotitaDematon}"></h:outputText>
+                </p:column>
+                
+              
+
+               
+                <f:facet name="footer">
+                    
+                     <p:commandButton process="datatable" update=":form:View" 
+                                     icon="ui-icon-search" value="ΠΡΟΒΟΛΗ" oncomplete="PF('ViewDialog').show()" />
+                     
+                    <p:commandButton process="datatable" update=":form:Insert" 
+                                     icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" oncomplete="PF('InsertDialog').show()" />
+                    
+                     <p:commandButton process="datatable" update=":form:Delete" 
+                                     icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" oncomplete="PF('DeleteDialog').show()" />
+                    
+                   
+
+                </f:facet>
+
+
+            </p:dataTable>
+            
+            <!-- παραθυρο για εισαγωγη φορμας-->
+            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Insert" style="text-align:center;">
+                    
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+
+                        <h:outputText value="busArithmosKikloforias" />
+                        <h:inputText  id="busArithmosKikloforias" value="#{busManagedBean.busToInsert.busArithmosKikloforias}"
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        
+                        
+                        <h:outputText value="busArithmosTheseon" />
+                        <h:inputText  id="busArithmosTheseon" value="#{busManagedBean.busToInsert.busArithmosTheseon}"
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                       
+                        
+                        <h:outputText value="busTypebus" />
+                        <h:inputText  id="busTypebus" value="#{busManagedBean.busToInsert.busTypebus}"
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        
+                        
+                        <h:outputText value="busXoritikotitaDematon" />
+                        <h:inputText  id="busXoritikotitaDematon" value="#{busManagedBean.busToInsert.busXoritikotitaDematon}"
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        
+                        
+                        
+                      
+                                 
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{busManagedBean.insert()}" 
+                                         oncomplete="PF('InsertDialog').hide()" validateClient="true"/>
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+            
+            <!-- παραθυρο για προβολη -->
+            <p:dialog header="ΠΡΟΒΟΛΗ" widgetVar="ViewDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="View" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+                        <h:outputText value="busArithmosKikloforias" />
+                        <h:outputText value="#{busManagedBean.selectedBus.busArithmosKikloforias}" />
+                        
+                        <h:outputText value="busArithmosTheseon" />
+                        <h:outputText value="#{busManagedBean.selectedBus.busArithmosTheseon}" />
+                        
+                        <h:outputText value="busTypebus" />
+                        <h:outputText value="#{busManagedBean.selectedBus.busTypebus}" />
+                        
+                        <h:outputText value="busXoritikotitaDematon" />
+                        <h:outputText value="#{busManagedBean.selectedBus.busXoritikotitaDematon}" />
+                        
+                       
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+            
+            
+            <!-- παραθυρο για διαγραφη -->
+             <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Delete" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+
+                        <h:outputText value="busArithmosKikloforias" />
+                        <h:outputText value="#{busManagedBean.selectedBus.busArithmosKikloforias}" />
+                        
+                         <h:outputText value="busArithmosTheseon" />
+                        <h:outputText value="#{busManagedBean.selectedBus.busArithmosTheseon}" />
+                        
+                        <h:outputText value="busTypebus" />
+                        <h:outputText value="#{busManagedBean.selectedBus.busTypebus}" />
+                        
+                        <h:outputText value="busXoritikotitaDematon" />
+                        <h:outputText value="#{busManagedBean.selectedBus.busXoritikotitaDematon}" />
+
+                        
+                        
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" actionListener="#{busManagedBean.delete()}" 
+                                         oncomplete="PF('DeleteDialog').hide()" />
+                        
+                        
+                        
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl id="msgs"  showDetail="false"/>
+
+            <p:dataTable id="datatable" var="user" 
+                         value="#{usersManagedBean.users}"
+                         widgetVar="userTable"
+                         emptyMessage="Δεν υπάρχουν εγγραφές"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         rowIndexVar="index"
+                         rowKey="#{user.id}"
+                         selection="#{usersManagedBean.selectedUser}"
+                         selectionMode="single"
+                         filteredValue="#{usersManagedBean.filteredUsersList}">
+
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="ΑΝΑΖΗΤΗΣΗ:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('userTable').filter()" style="width:300px" placeholder="ΕΙΣΑΓΕΤΕ ΛΕΞΗ ΑΝΑΖΗΤΗΣΗΣ"/>
+                    </p:outputPanel>
+                </f:facet>
+
+                <p:column>
+                    <f:facet name="header"> Α/Α</f:facet>#{index+1}
+                </p:column>
+
+                <p:column headerText="ΚΩΔΙΚΟΣ ΧΡΗΣΤΗ" filterBy="#{user.id.userId}">
+                    <h:outputText value="#{user.id.userId}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="ΕΠΙΘΕΤΟ" filterBy="#{user.userLastname}">
+                    <h:outputText value="#{user.userLastname}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="ΟΝΟΜΑ" filterBy="#{user.userFirstname}">
+                    <h:outputText value="#{user.userFirstname}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="Α.Δ.Τ" filterBy="#{user.userAdt}">
+                    <h:outputText value="#{user.userAdt}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="Α.Φ.Μ" filterBy="#{user.userAfm}">
+                    <h:outputText value="#{user.userAfm}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="ΤΗΛΕΦΩΝΟ" filterBy="#{user.userPhone}">
+                    <h:outputText value="#{user.userPhone}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="ΔΙΕΥΘΥΝΣΗ" filterBy="#{user.userAddress}">
+                    <h:outputText value="#{user.userAddress}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="E-MAIL" filterBy="#{user.userEmail}">
+                    <h:outputText value="#{user.userEmail}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="USERNAME" filterBy="#{user.userUsername}">
+                    <h:outputText value="#{user.userUsername}"></h:outputText>
+                </p:column>
+
+
+                <p:column headerText="ΡΟΛΟΣ" filterBy="#{user.roles.roleName}">
+                    <h:outputText value="#{user.roles.roleName}"></h:outputText>
+                </p:column>
+
+                <f:facet name="footer">
+                    
+                     <p:commandButton process="datatable" update=":form:View" 
+                                     icon="ui-icon-search" value="ΠΡΟΒΟΛΗ" oncomplete="PF('ViewDialog').show()" />
+                     
+                    <p:commandButton process="datatable" update=":form:Insert" 
+                                     icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" oncomplete="PF('InsertDialog').show()" />
+                    
+                     <p:commandButton process="datatable" update=":form:Delete" 
+                                     icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" oncomplete="PF('DeleteDialog').show()" />
+                    
+                   
+
+                </f:facet>
+
+
+            </p:dataTable>
+            
+            <!-- παραθυρο για εισαγωγη φορμας-->
+            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Insert" style="text-align:center;">
+                    
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+                        <h:outputText value="ΕΠΙΘΕΤΟ" />
+                        <h:inputText id="userLastname" value="#{usersManagedBean.usersToInsert.userLastname}" 
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΕΠΙΘΕΤΟ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="userLastname" />
+                        <h:outputText value="#{usersManagedBean.usersToInsert.userLastname}" />
+
+                        <h:outputText value="ΟΝΟΜΑ" />
+                        <h:inputText  id="userFirstname" value="#{usersManagedBean.usersToInsert.userFirstname}"
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="userFirstname" />
+                        <h:outputText value="#{usersManagedBean.usersToInsert.userFirstname}" />
+                                      
+
+                        <h:outputText value="Α.Δ.Τ" />
+                        <h:inputText  id="userAdt" value="#{usersManagedBean.usersToInsert.userAdt}" 
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ Α.Δ.Τ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="userAdt" />
+                        <h:outputText value="#{usersManagedBean.usersToInsert.userAdt}" />
+                        
+
+                        <h:outputText value="Α.Φ.Μ" />
+                        <h:inputText  id="userAfm" value="#{usersManagedBean.usersToInsert.userAfm}" 
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ Α.Φ.Μ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="userAfm" />
+<!--                        <h:outputText value="#{usersManagedBean.usersToInsert.userAfm}" />-->
+
+                        <h:outputText value="ΤΗΛΕΦΩΝΟ" />
+                        <h:inputText  id="userPhone" value="#{usersManagedBean.usersToInsert.userPhone}" 
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΤΗΛΕΦΩΝΟ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="userPhone" />
+                        <h:outputText value="#{usersManagedBean.usersToInsert.userPhone}" />
+                        
+                        <h:outputText value="ΔΙΕΥΘΥΝΣΗ" />
+                        <h:inputText  id="userAddress" value="#{usersManagedBean.usersToInsert.userAddress}"
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΔΙΕΥΘΥΝΣΗ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="userAddress" />
+                        <h:outputText value="#{usersManagedBean.usersToInsert.userAddress}" />
+
+                        <h:outputText value="E-MAIL" />
+                        <h:inputText  id="userEmail" value="#{usersManagedBean.usersToInsert.userEmail}" 
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ E-MAIL ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="userEmail" />
+                        <h:outputText value="#{usersManagedBean.usersToInsert.userEmail}" />
+
+                        <h:outputText value="USERNAME" />
+                        <h:inputText  id="userUsername" value="#{usersManagedBean.usersToInsert.userUsername}" 
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ USERNAME ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="userUsername" />
+                        <h:outputText value="#{usersManagedBean.usersToInsert.userUsername}" />
+
+                        <h:outputText value="PASSWORD" />
+                        <h:inputText  id="userPassword" value="#{usersManagedBean.usersToInsert.userPassword}"
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ PASSWORD ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="userPassword" />
+                        <h:outputText value="#{usersManagedBean.usersToInsert.userPassword}" />
+                        
+                        <h:outputText value="ΡΟΛΟΣ" />
+                        <h:inputText  id="roleId" value="#{usersManagedBean.roleId}" 
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΡΟΛΟΣ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="roleId" />
+<!--                        <h:outputText value="#{usersManagedBean.roleId}" />-->
+                        
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{usersManagedBean.insert()}" 
+                                         oncomplete="PF('InsertDialog').hide()" validateClient="true"/>
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+            
+            <!-- παραθυρο για προβολη -->
+            <p:dialog header="ΠΡΟΒΟΛΗ" widgetVar="ViewDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="View" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+                        <h:outputText value="ΕΠΙΘΕΤΟ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userLastname}" />                
+
+                        <h:outputText value="ΟΝΟΜΑ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userFirstname}" />
+
+                        <h:outputText value="Α.Δ.Τ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userAdt}" />
+
+                        <h:outputText value="Α.Φ.Μ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userAfm}" />
+
+                        <h:outputText value="ΤΗΛΕΦΩΝΟ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userPhone}" />
+
+                        <h:outputText value="ΔΙΕΥΘΥΝΣΗ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userAddress}" />
+
+                        <h:outputText value="E-MAIL" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userEmail}" />
+
+                        <h:outputText value="USERNAME" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userUsername}" />
+
+                        <h:outputText value="PASSWORD" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userPassword}" />
+                        
+                        <h:outputText value="ΡΟΛΟΣ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.roles.roleName}" />
+                        
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+            
+            
+            <!-- παραθυρο για διαγραφη -->
+             <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Delete" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+                        <h:outputText value="ΕΠΙΘΕΤΟ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userLastname}" />                
+
+                        <h:outputText value="ΟΝΟΜΑ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userFirstname}" />
+
+                        <h:outputText value="Α.Δ.Τ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userAdt}" />
+
+                        <h:outputText value="Α.Φ.Μ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userAfm}" />
+
+                        <h:outputText value="ΤΗΛΕΦΩΝΟ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userPhone}" />
+
+                        <h:outputText value="ΔΙΕΥΘΥΝΣΗ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userAddress}" />
+
+                        <h:outputText value="E-MAIL" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userEmail}" />
+
+                        <h:outputText value="USERNAME" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userUsername}" />
+
+                        <h:outputText value="PASSWORD" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.userPassword}" />
+                        
+                        <h:outputText value="ΡΟΛΟΣ" />
+                        <h:outputText value="#{usersManagedBean.selectedUser.roles.roleName}" />
+                        
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" actionListener="#{usersManagedBean.delete(usersManagedBean.selectedUser.id)}" 
+                                         oncomplete="PF('DeleteDialog').hide()" />
+                        
+                        
+                        
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+        </h:form>
+    </h:body>
+</html>
+

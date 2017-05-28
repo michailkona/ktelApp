@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 28 ??? 2017 4:28:42 ?? by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Dromologio" table="dromologio" catalog="kteldb" optimistic-lock="version">
+        <composite-id name="id" class="model.DromologioId">
+            <key-property name="dromologioId" type="int">
+                <column name="dromologio_id" />
+            </key-property>
+            <key-property name="cityCityIdAnaxorisi" type="int">
+                <column name="city_city_id_anaxorisi" />
+            </key-property>
+            <key-property name="cityCityIdAfiksi" type="int">
+                <column name="city_city_id_afiksi" />
+            </key-property>
+            <key-property name="busBusId" type="int">
+                <column name="bus_bus_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="bus" class="model.Bus" update="false" insert="false" fetch="select">
+            <column name="bus_bus_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cityByCityCityIdAnaxorisi" class="model.City" update="false" insert="false" fetch="select">
+            <column name="city_city_id_anaxorisi" not-null="true" />
+        </many-to-one>
+        <many-to-one name="cityByCityCityIdAfiksi" class="model.City" update="false" insert="false" fetch="select">
+            <column name="city_city_id_afiksi" not-null="true" />
+        </many-to-one>
+        <property name="dromologioDate" type="date">
+            <column name="dromologio_date" length="10" not-null="true" />
+        </property>
+        <property name="dromologioTimeAnaxorisi" type="date">
+            <column name="dromologio_time_anaxorisi" length="10" not-null="true" />
+        </property>
+        <property name="dromologioTimeAfiksi" type="date">
+            <column name="dromologio_time_afiksi" length="10" not-null="true" />
+        </property>
+        <property name="dromologioTypeDromologio" type="string">
+            <column name="dromologio_type_dromologio" length="45" not-null="true" />
+        </property>
+        <property name="dromologioPrice" type="string">
+            <column name="dromologio_price" length="45" not-null="true" />
+        </property>
+        <set name="tickets" table="ticket" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="dromologio_dromologio_id" not-null="true" />
+                <column name="dromologio_city_city_id_anaxorisi" not-null="true" />
+                <column name="dromologio_city_city_id_afiksi" not-null="true" />
+                <column name="dromologio_bus_bus_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Ticket" />
+        </set>
+        <set name="demas" table="dema" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="dromologio_dromologio_id" not-null="true" />
+                <column name="dromologio_city_city_id_anaxorisi" not-null="true" />
+                <column name="dromologio_city_city_id_afiksi" not-null="true" />
+                <column name="dromologio_bus_bus_id" not-null="true" />
+            </key>
+            <one-to-many class="model.Dema" />
+        </set>
+    </class>
+</hibernate-mapping>
