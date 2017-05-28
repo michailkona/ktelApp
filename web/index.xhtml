@@ -1,17 +1,316 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>KTEL App</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com"/>
+        <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template"/>
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300|Raleway:300,400,900,700italic,700,300,600"/>
+
+
+        <h:outputStylesheet name="css/style.css"/>
+        <h:outputStylesheet name="css/animate.css"/>
+        <h:outputStylesheet name="css/bootstrap.min.css"/>
+        <h:outputStylesheet name="css/font-awesome.min.css"/>
+        <h:outputStylesheet name="css/jquery.bxslider.css"/>
+        <script src="http://maps.google.com/maps/api/js?key=AIzaSyAw-a1t7PRyYiYw0gbV77NN40t-OvnvbFs" type="text/javascript" ></script>
+
+
+<!--        <style>
+            #map {
+                height: 400px; 
+                width: 100%;
+            }
+        </style>-->
     </h:head>
     <h:body>
 
-        <h:link outcome="/user/ViewUsers.xhtml" value="Προβολή Χρηστών" /><br></br>
-        <h:link outcome="/roles/ViewRoles.xhtml" value="Προβολή Ρόλων" /><br></br>
-        <h:link outcome="/city/ViewCity.xhtml" value="Προβολή Πόλεων" /><br></br>
-        <h:link outcome="/bus/ViewBus.xhtml" value="Προβολή Λεωφορείων" /><br></br>
-        <h:link outcome="/euser/ViewEuser.xhtml" value="Προβολή Διαδικτυακών Χρηστών" /><br></br>
+
+
+
+
+
+        <!-- =======================================================
+            Theme Name: Baker
+            Theme URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
+            Author: BootstrapMade.com
+            Author URL: https://bootstrapmade.com
+        ======================================================= -->
+
+
+
+        <div class="loader"></div>
+        <div id="myDiv">
+            <!--HEADER-->
+            <div class="header">
+                <div class="bg-color">
+                    <header id="main-header">
+                        <nav class="navbar navbar-default navbar-fixed-top">
+                            <div class="container">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+
+
+                                    <a class="navbar-brand" href="#" style=" margin-top: -12%;">
+                                        <img src="resources/img/buslogo.jpg" height="60"/>
+                                        <div style="margin-left: 100%; margin-top: -30%;"> Κ.Τ.<span class="logo-dec">Ε.Λ</span></div></a>
+
+
+                                </div>
+                                <div class="collapse navbar-collapse" id="myNavbar">
+                                    <ul class="nav navbar-nav navbar-right">
+                                        <li class="active"><a href="#main-header">ΑΡΧΙΚΗ</a></li>
+                                        <li class=""><a href="#feature">Η ΕΤΑΙΡΕΙΑ</a></li>
+                                        <li class=""><a href="#service">ΥΠΗΡΕΣΙΕΣ</a></li>
+                                        <li class=""><a href="#portfolio">ΔΡΟΜΟΛΟΓΙΑ</a></li>
+                                        <li class=""><a href="#testimonial">ΕΙΣΗΤΗΡΙΑ</a></li>
+                                        <li class=""><a href="#blog">ΕΚΔΟΤΗΡΙΑ</a></li>
+                                        <li class=""><a href="#contact">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </header>
+                    <div class="wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="banner-info text-center wow fadeIn delay-05s">
+
+                                    <h2 class="bnr-sub-title">ΚΑΛΩΣ ΗΡΘΑΤΕ!!</h2>
+
+                                    <div class="overlay-detail">
+                                        <a href="#feature"><i class="fa fa-angle-down"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ HEADER-->
+            <!---->
+            <section id="feature" class="section-padding wow fadeIn delay-05s">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2 class="service-title pad-bt15">Η ΕΤΑΙΡΕΙΑ ΜΑΣ</h2>
+                            <hr class="bottom-line"/>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="wrap-item text-center">
+
+                                <h3 class="pad-bt15">ΙΣΤΟΡΙΚΗ ΑΝΑΔΡΟΜΗ</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="wrap-item text-center">
+
+                                <h3 class="pad-bt15">ΕΤΑΙΡΙΚΗ ΥΠΕΥΘΥΝΟΤΗΤΑ</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="wrap-item text-center">
+
+                                <h3 class="pad-bt15">Ο ΣΤΟΛΟΣ ΜΑΣ</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="wrap-item text-center">
+
+                                <h3 class="pad-bt15">ΔΙΟΙΚΗΤΙΚΗ ΔΟΜΗ</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!---->
+            <!--service-->
+            <section id="service" class="section-padding wow fadeInUp delay-05s">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2 class="service-title pad-bt15">ΥΠΗΡΕΣΙΕΣ</h2>
+                            <hr class="bottom-line"/>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="service-item">
+                                <div><img src="resources/img/wifi.png" class="img-responsive" height="80" width="80"/></div>
+
+                                <h3><span>A</span>ΣΥΡΜΑΤΟ ΔΙΤΥΟ</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="service-item">
+                                <div><img src="resources/img/klimatismos.jpg" class="img-responsive" height="80" width="80"/></div>
+
+                                <h3><span>Κ</span>ΛΙΜΑΤΙΣΜΟΣ</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="service-item">
+                                <div><img src="resources/img/dromologia express.jpg" class="img-responsive" height="80" width="80"/></div>
+
+                                <h3><span>Δ</span>ΡΟΜΟΛΟΓΙΑ EXPRESS</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <div class="service-item">
+                                <div><img src="resources/img/aposkeues.jpg" class="img-responsive" height="80" width="80"/></div>
+
+                                <h3><span>Α</span>ΠΟΣΚΕΥΕΣ</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!---->
+            <!---->
+
+
+            <!---->
+            <section id="blog" class="section-padding wow fadeInUp delay-05s">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <h2 class="service-title pad-bt15">Latest from our blog</h2>
+                            <p class="sub-title pad-bt15">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod<br/>tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <hr class="bottom-line"/>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="blog-sec">
+                                <div class="blog-img">
+                                    <a href="">
+                                        <img src="img/blog01.jpg" class="img-responsive"/>
+                                    </a>
+                                </div>
+                                <div class="blog-info">
+                                    <h2>This is Lorem ipsum heading.</h2>
+                                    <div class="blog-comment">
+                                        <p>Posted In: <span>Legal Advice</span></p>
+                                        <p>
+                                            <span><a href="#"><i class="fa fa-comments"></i></a> 15</span>
+                                            <span><a href="#"><i class="fa fa-eye"></i></a> 11</span></p>
+                                    </div>
+                                    <p>We cannot expect people to have respect for laws and orders until we teach respect to those we have entrusted to enforce those laws all the time. we always want to help people cordially.</p>
+                                    <a href="" class="read-more">Read more →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="blog-sec">
+                                <div class="blog-img">
+                                    <a href="">
+                                        <img src="img/blog02.jpg" class="img-responsive"/>
+                                    </a>
+                                </div>
+                                <div class="blog-info">
+                                    <h2>This is Lorem ipsum heading.</h2>
+                                    <div class="blog-comment">
+                                        <p>Posted In: <span>Legal Advice</span></p>
+                                        <p>
+                                            <span><a href="#"><i class="fa fa-comments"></i></a> 15</span>
+                                            <span><a href="#"><i class="fa fa-eye"></i></a> 11</span></p>
+                                    </div>
+                                    <p>We cannot expect people to have respect for laws and orders until we teach respect to those we have entrusted to enforce those laws all the time. we always want to help people cordially.</p>
+                                    <a href="" class="read-more">Read more →</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="blog-sec">
+                                <div class="blog-img">
+                                    <a href="">
+                                        <img src="img/blog03.jpg" class="img-responsive"/>
+                                    </a>
+                                </div>
+                                <div class="blog-info">
+                                    <h2>This is Lorem ipsum heading.</h2>
+                                    <div class="blog-comment">
+                                        <p>Posted In: <span>Legal Advice</span></p>
+                                        <p>
+                                            <span><a href="#"><i class="fa fa-comments"></i></a> 15</span>
+                                            <span><a href="#"><i class="fa fa-eye"></i></a> 11</span></p>
+                                    </div>
+                                    <p>We cannot expect people to have respect for laws and orders until we teach respect to those we have entrusted to enforce those laws all the time. we always want to help people cordially.</p>
+                                    <a href="" class="read-more">Read more →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!---->
+            <section id="contact" class="section-padding wow fadeInUp delay-05s">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 text-center white">
+                            <h2 class="service-title pad-bt15">ΕΠΙΚΟΙΝΩΝΙΑ</h2>
+                            <hr class="bottom-line white-bg"/>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="loction-info white">
+                                <p><i class="fa fa-map-marker fa-fw pull-left fa-2x"></i>A99 Adam Street<br/>Texas, TX 555072</p>
+                                <p><i class="fa fa-envelope-o fa-fw pull-left fa-2x"></i>info@baker.com</p>
+                                <p><i class="fa fa-phone fa-fw pull-left fa-2x"></i>+41 5787 2323</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <f:view>
+                                <p:gmap  center="38.8996056,22.4336253" zoom="15" type="HYBRID" style="width:100%; height: 400px"/>
+                                
+
+                            </f:view>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!---->
+            <!---->
+            <footer id="footer">
+                <div class="container">
+                    <div class="row text-center">
+                        <p>&copy; Michail Konstantina. All Rights Reserved.</p>
+                        <div class="credits">
+                            
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!---->
+        </div>
+        <h:outputScript library="js" name="jquery.min.js"/>
+        <h:outputScript library="js" name="jquery.easing.min.js"/>
+        <h:outputScript library="js" name="bootstrap.min.js"/>
+        <h:outputScript library="js" name="wow.js"/>
+        <h:outputScript library="js" name="jquery.bxslider.min.js"/>
+        <h:outputScript library="js" name="custom.js"/>
+        <h:outputScript library="js" name="jquery.ui.map.min.js"/>
+
+
 
 
     </h:body>
