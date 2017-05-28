@@ -122,14 +122,16 @@
                         
 
                         <h:outputText value="Α.Φ.Μ" />
-                        <h:inputText  id="userAfm" value="#{usersManagedBean.usersToInsert.userAfm}" 
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ Α.Φ.Μ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:inputMask  id="userAfm" value="#{usersManagedBean.usersToInsert.userAfm}" 
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ Α.Φ.Μ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"
+                                     mask="999999999"/>
                         <p:message for="userAfm" />
 <!--                        <h:outputText value="#{usersManagedBean.usersToInsert.userAfm}" />-->
 
                         <h:outputText value="ΤΗΛΕΦΩΝΟ" />
-                        <h:inputText  id="userPhone" value="#{usersManagedBean.usersToInsert.userPhone}" 
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΤΗΛΕΦΩΝΟ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:inputMask  id="userPhone" value="#{usersManagedBean.usersToInsert.userPhone}" 
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΤΗΛΕΦΩΝΟ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"
+                                     mask="999-9999999"/>
                         <p:message for="userPhone" />
                         <h:outputText value="#{usersManagedBean.usersToInsert.userPhone}" />
                         
