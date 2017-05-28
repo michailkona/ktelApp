@@ -36,23 +36,23 @@
                     <f:facet name="header"> Α/Α</f:facet>#{index+1}
                 </p:column>
 
-                <p:column headerText="ΚΩΔΙΚΟΣ" filterBy="#{bus.busId}">
+                <p:column headerText="ΚΩΔΙΚΟΣ ΛΕΩΦΟΡΕΙΟΥ" filterBy="#{bus.busId}">
                     <h:outputText value="#{bus.busId}"></h:outputText>
                 </p:column>
 
-                <p:column headerText="busArithmosKikloforias" filterBy="#{bus.busArithmosKikloforias}">
+                <p:column headerText="ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ" filterBy="#{bus.busArithmosKikloforias}">
                     <h:outputText value="#{bus.busArithmosKikloforias}"></h:outputText>
                 </p:column>
                 
-                <p:column headerText="busArithmosTheseon" filterBy="#{bus.busArithmosTheseon}">
+                <p:column headerText="ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ" filterBy="#{bus.busArithmosTheseon}">
                     <h:outputText value="#{bus.busArithmosTheseon}"></h:outputText>
                 </p:column>
                 
-                <p:column headerText="busTypebus" filterBy="#{bus.busTypebus}">
+                <p:column headerText="ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ" filterBy="#{bus.busTypebus}">
                     <h:outputText value="#{bus.busTypebus}"></h:outputText>
                 </p:column>
                 
-                <p:column headerText="busXoritikotitaDematon" filterBy="#{bus.busXoritikotitaDematon}">
+                <p:column headerText="ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ" filterBy="#{bus.busXoritikotitaDematon}">
                     <h:outputText value="#{bus.busXoritikotitaDematon}"></h:outputText>
                 </p:column>
                 
@@ -84,24 +84,24 @@
                     <p:panelGrid  columns="2"  columnClasses="label,value">
 
 
-                        <h:outputText value="busArithmosKikloforias" />
+                        <h:outputText value="ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ" />
                         <h:inputText  id="busArithmosKikloforias" value="#{busManagedBean.busToInsert.busArithmosKikloforias}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
                         
                         
-                        <h:outputText value="busArithmosTheseon" />
+                        <h:outputText value="ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ" />
                         <h:inputText  id="busArithmosTheseon" value="#{busManagedBean.busToInsert.busArithmosTheseon}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
                        
                         
-                        <h:outputText value="busTypebus" />
+                        <h:outputText value="ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ" />
                         <h:inputText  id="busTypebus" value="#{busManagedBean.busToInsert.busTypebus}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
                         
                         
-                        <h:outputText value="busXoritikotitaDematon" />
+                        <h:outputText value="ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ" />
                         <h:inputText  id="busXoritikotitaDematon" value="#{busManagedBean.busToInsert.busXoritikotitaDematon}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
                         
                         
                         
@@ -119,16 +119,16 @@
                 <p:outputPanel id="View" style="text-align:center;">
                     <p:panelGrid  columns="2"  columnClasses="label,value">
 
-                        <h:outputText value="busArithmosKikloforias" />
+                        <h:outputText value="ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busArithmosKikloforias}" />
                         
-                        <h:outputText value="busArithmosTheseon" />
+                        <h:outputText value="ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busArithmosTheseon}" />
                         
-                        <h:outputText value="busTypebus" />
+                        <h:outputText value="ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busTypebus}" />
                         
-                        <h:outputText value="busXoritikotitaDematon" />
+                        <h:outputText value="ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busXoritikotitaDematon}" />
                         
                        
@@ -144,16 +144,16 @@
                     <p:panelGrid  columns="2"  columnClasses="label,value">
 
 
-                        <h:outputText value="busArithmosKikloforias" />
+                        <h:outputText value="ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busArithmosKikloforias}" />
                         
-                         <h:outputText value="busArithmosTheseon" />
+                         <h:outputText value="ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busArithmosTheseon}" />
                         
-                        <h:outputText value="busTypebus" />
+                        <h:outputText value="ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busTypebus}" />
                         
-                        <h:outputText value="busXoritikotitaDematon" />
+                        <h:outputText value="ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busXoritikotitaDematon}" />
 
                         
@@ -161,7 +161,8 @@
                         <p:commandButton update=":form " icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" actionListener="#{busManagedBean.delete()}" 
                                          oncomplete="PF('DeleteDialog').hide()" />
                         
-                        
+                        <h:outputText  />
+
                         
                     </p:panelGrid>
                 </p:outputPanel>
