@@ -40,15 +40,15 @@
                     <h:outputText value="#{euser.euserId}"></h:outputText>
                 </p:column>
 
-                <p:column headerText="euserUsername" filterBy="#{euser.euserUsername}">
+                <p:column headerText="Username" filterBy="#{euser.euserUsername}">
                     <h:outputText value="#{euser.euserUsername}"></h:outputText>
                 </p:column>
 
-                <p:column headerText="euserPassword" filterBy="#{euser.euserPassword}">
+                <p:column headerText="Password" filterBy="#{euser.euserPassword}">
                     <h:outputText value="#{euser.euserPassword}"></h:outputText>
                 </p:column>
 
-                <p:column headerText="euserEmail" filterBy="#{euser.euserEmail}">
+                <p:column headerText="E-mail" filterBy="#{euser.euserEmail}">
                     <h:outputText value="#{euser.euserEmail}"></h:outputText>
                 </p:column>
 
@@ -79,17 +79,17 @@
                     <p:panelGrid  columns="2"  columnClasses="label,value">
 
 
-                        <h:outputText value="euserUsername" />
+                        <h:outputText value="Username" />
                         <h:inputText  id="euserUsername" value="#{euserManagedBean.euserToInsert.euserUsername}"
                                       required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
 
 
-                        <h:outputText value="euserPassword" />
+                        <h:outputText value="Password" />
                         <h:inputText  id="euserPassword" value="#{euserManagedBean.euserToInsert.euserPassword}"
                                       required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
 
 
-                        <h:outputText value="euserEmail" />
+                        <h:outputText value="E-mail" />
                         <h:inputText  id="euserEmail" value="#{euserManagedBean.euserToInsert.euserEmail}"
                                       required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
 
@@ -108,14 +108,14 @@
                 <p:outputPanel id="View" style="text-align:center;">
                     <p:panelGrid  columns="2"  columnClasses="label,value">
 
-                        <h:outputText value="euserUsername" />
+                        <h:outputText value="Username" />
                         <h:outputText value="#{euserManagedBean.selectedEuser.euserUsername}" />
 
-                        <h:outputText value="euserPassword" />
+                        <h:outputText value="Password" />
                         <h:outputText  value="#{euserManagedBean.selectedEuser.euserPassword}"/>
 
 
-                        <h:outputText value="euserEmail" />
+                        <h:outputText value="E-mail" />
                         <h:outputText  value="#{euserManagedBean.selectedEuser.euserEmail}"/>
 
 
@@ -130,21 +130,21 @@
                     <p:panelGrid  columns="2"  columnClasses="label,value">
 
 
-                        <h:outputText value="euserUsername" />
+                        <h:outputText value="Username" />
                         <h:outputText value="#{euserManagedBean.selectedEuser.euserUsername}" />
 
-                        <h:outputText value="euserPassword" />
+                        <h:outputText value="Password" />
                         <h:outputText  value="#{euserManagedBean.selectedEuser.euserPassword}"/>
 
 
-                        <h:outputText value="euserEmail" />
+                        <h:outputText value="E-mail" />
                         <h:outputText  value="#{euserManagedBean.selectedEuser.euserEmail}"/>
 
                         <p:commandButton update=":form " icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" actionListener="#{euserManagedBean.delete()}" 
                                          oncomplete="PF('DeleteDialog').hide()" />
 
 
-
+                        <h:outputText  />
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
