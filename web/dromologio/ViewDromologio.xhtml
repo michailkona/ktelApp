@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="form">
+            <p:growl id="msgs"  showDetail="false"/>
+
+            <p:dataTable id="datatable" var="dromo" 
+                         value="#{dromologioManagedBean.dromologio}"
+                         widgetVar="dromologioTable"
+                         emptyMessage="Δεν υπάρχουν εγγραφές"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         rowIndexVar="index"
+                         rowKey="#{dromo.id}"
+                         selection="#{dromologioManagedBean.selectedDromologio}"
+                         selectionMode="single"
+                         filteredValue="#{dromologioManagedBean.filteredDromologioList}">
+
+                <f:facet name="header">
+                    <p:outputPanel>
+                        <h:outputText value="ΑΝΑΖΗΤΗΣΗ:" />
+                        <p:inputText id="globalFilter" onkeyup="PF('dromologioTable').filter()" style="width:300px" placeholder="ΕΙΣΑΓΕΤΕ ΛΕΞΗ ΑΝΑΖΗΤΗΣΗΣ"/>
+                    </p:outputPanel>
+                </f:facet>
+
+                <p:column>
+                    <f:facet name="header"> Α/Α</f:facet>#{index+1}
+                </p:column>
+
+                <p:column headerText="dromologioDate" filterBy="#{dromo.dromologioDate}">
+                    <p:calendar  value="#{dromo.dromologioDate}" pattern="dd/MM/yyyy" />
+                </p:column>
+
+                <p:column headerText="dromologioTimeAnaxorisi" filterBy="#{dromo.dromologioTimeAnaxorisi}">
+                    <p:calendar  value="#{dromo.dromologioTimeAnaxorisi}" pattern="MM/dd/yyyy HH:mm:ss"/>
+                </p:column>
+
+                <p:column headerText="dromologioTimeAfiksi" filterBy="#{dromo.dromologioTimeAfiksi}">
+                    <p:calendar  value="#{dromo.dromologioTimeAfiksi}" pattern="MM/dd/yyyy HH:mm:ss"/>
+                </p:column>
+
+                <p:column headerText="dromologioTypeDromologio" filterBy="#{dromo.dromologioTypeDromologio}">
+                    <h:outputText value="#{dromo.dromologioTypeDromologio}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="dromologioPrice" filterBy="#{dromo.dromologioPrice}">
+                    <h:outputText value="#{dromo.dromologioPrice}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="cityByCityCityIdAnaxorisi" filterBy="#{dromo.cityByCityCityIdAnaxorisi}">
+                    <h:outputText value="#{dromo.cityByCityCityIdAnaxorisi.cityName}"></h:outputText>
+                </p:column>
+
+                <p:column headerText="cityByCityCityIdAfiksi" filterBy="#{dromo.cityByCityCityIdAfiksi}">
+                    <h:outputText value="#{dromo.cityByCityCityIdAfiksi.cityName}"></h:outputText>
+                </p:column>
+
+
+                <f:facet name="footer">
+
+                    <p:commandButton process="datatable" update=":form:View" 
+                                     icon="ui-icon-search" value="ΠΡΟΒΟΛΗ" oncomplete="PF('ViewDialog').show()" />
+
+                    <p:commandButton process="datatable" update=":form:Insert" 
+                                     icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" oncomplete="PF('InsertDialog').show()" />
+
+                                         <p:commandButton process="datatable" update=":form:Delete" 
+                                                         icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" oncomplete="PF('DeleteDialog').show()" />
+
+
+
+                </f:facet>
+
+
+            </p:dataTable>
+
+            <!-- παραθυρο για προβολη -->
+            <p:dialog header="ΠΡΟΒΟΛΗ" widgetVar="ViewDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="View" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+                        <h:outputText value="ΕΠΙΘΕΤΟ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.dromologioDate}" />                
+
+                        <h:outputText value="ΟΝΟΜΑ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.dromologioTimeAnaxorisi}" />
+
+                        <h:outputText value="Α.Δ.Τ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.dromologioTimeAfiksi}" />
+
+                        <h:outputText value="Α.Φ.Μ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.dromologioTypeDromologio}" />
+
+                        <h:outputText value="ΤΗΛΕΦΩΝΟ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.dromologioPrice}" />
+
+                        <h:outputText value="ΔΙΕΥΘΥΝΣΗ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.cityByCityCityIdAnaxorisi.cityName}" />
+
+                        <h:outputText value="E-MAIL" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.cityByCityCityIdAfiksi.cityName}" />
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+
+            <!-- παραθυρο για εισαγωγη φορμας-->
+            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Insert" style="text-align:center;">
+
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+                        <h:outputText value="dromologioDate" />
+                        <p:calendar value="#{dromologioManagedBean.dromologioToInsert.dromologioDate}" pattern="MM/dd/yyyy" />
+
+                        <h:outputText value="dromologioTimeAnaxorisi" />
+                        <p:calendar value="#{dromologioManagedBean.dromologioToInsert.dromologioTimeAnaxorisi}" pattern="MM/dd/yyyy HH:mm:ss" />
+
+                        <h:outputText value="dromologioTimeAfiksi" />
+                        <p:calendar value="#{dromologioManagedBean.dromologioToInsert.dromologioTimeAfiksi}" pattern="MM/dd/yyyy HH:mm:ss" />
+
+                        <h:outputText value="dromologioTypeDromologio" />
+                        <h:inputText value="#{dromologioManagedBean.dromologioToInsert.dromologioTypeDromologio}" />
+
+                        <h:outputText value="dromologioPrice" />
+                        <h:inputText value="#{dromologioManagedBean.dromologioToInsert.dromologioPrice}" />
+
+                        <h:outputText value="cityByCityCityIdAnaxorisi" />
+                        <h:inputText value="#{dromologioManagedBean.cityByCityCityIdAnaxorisi}" />
+
+                        <h:outputText value="cityByCityCityIdAfiksi" />
+                        <h:inputText value="#{dromologioManagedBean.cityByCityCityIdAfiksi}" />
+                        
+                        <h:outputText value="busBusId" />
+                        <h:inputText value="#{dromologioManagedBean.busBusId}" />
+
+
+
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{dromologioManagedBean.insert()}" 
+                                         oncomplete="PF('InsertDialog').hide()" validateClient="true"/>
+
+                        <h:outputText  />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+            
+            <!-- παραθυρο για διαγραφη -->
+             <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Delete" style="text-align:center;">
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+                         <h:outputText value="ΕΠΙΘΕΤΟ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.dromologioDate}" />                
+
+                        <h:outputText value="ΟΝΟΜΑ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.dromologioTimeAnaxorisi}" />
+
+                        <h:outputText value="Α.Δ.Τ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.dromologioTimeAfiksi}" />
+
+                        <h:outputText value="Α.Φ.Μ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.dromologioTypeDromologio}" />
+
+                        <h:outputText value="ΤΗΛΕΦΩΝΟ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.dromologioPrice}" />
+
+                        <h:outputText value="ΔΙΕΥΘΥΝΣΗ" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.cityByCityCityIdAnaxorisi.cityName}" />
+
+                        <h:outputText value="E-MAIL" />
+                        <h:outputText value="#{dromologioManagedBean.selectedDromologio.cityByCityCityIdAfiksi.cityName}" />
+                        
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" actionListener="#{dromologioManagedBean.delete(dromologioManagedBean.selectedDromologio.id)}" 
+                                         oncomplete="PF('DeleteDialog').hide()" />
+                        
+                        
+                        <h:outputText  />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+
+        </h:form>
+    </h:body>
+</html>
+
