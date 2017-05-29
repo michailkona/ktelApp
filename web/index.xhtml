@@ -23,15 +23,8 @@
         <script src="http://maps.google.com/maps/api/js?key=AIzaSyAw-a1t7PRyYiYw0gbV77NN40t-OvnvbFs" type="text/javascript" ></script>
 
 
-        <!--        <style>
-                    #map {
-                        height: 400px; 
-                        width: 100%;
-                    }
-                </style>-->
     </h:head>
     <h:body>
-
 
 
 
@@ -68,16 +61,29 @@
 
 
                                 </div>
-                                <div class="collapse navbar-collapse" id="myNavbar">
+                                <div class="collapse navbar-collapse" id="myNavbar" style="padding-right: 5%;">
                                     <ul class="nav navbar-nav navbar-right">
                                         <li class="active"><a href="#main-header">ΑΡΧΙΚΗ</a></li>
                                         <li class=""><a href="#feature">Η ΕΤΑΙΡΕΙΑ</a></li>
                                         <li class=""><a href="#service">ΥΠΗΡΕΣΙΕΣ</a></li>
-                                        <li> <h:link outcome="/dromologio/ViewDromologio.xhtml" value="ΔΡΟΜΟΛΟΓΙΑ" /></li>
-                                        <li class=""><a href="#testimonial">ΕΙΣΗΤΗΡΙΑ</a></li>
                                         <li class=""><a href="#blog">ΕΓΚΑΤΑΣΤΑΣΕΙΣ</a></li>
                                         <li class=""><a href="#contact">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
-
+                                       
+                                        <li>
+                                            <h:form >
+                                            <p:menubar>
+                                                <p:submenu label="ΠΙΝΑΚΕΣ" >
+                                                    <p:menuitem value="ΔΡΟΜΟΛΟΓΙΑ" url="/dromologio/ViewDromologio.xhtml"  />
+                                                    <p:menuitem value="ΠΡΟΒΟΛΗ ΡΟΛΩΝ" url="/roles/ViewRoles.xhtml"  />
+                                                    <p:menuitem value="ΠΡΟΒΟΛΗ ΧΡΗΣΤΩΝ" url="/user/ViewUsers.xhtml"  />
+                                                    <p:menuitem value="ΠΡΟΒΟΛΗ ΠΟΛΕΩΝ" url="/city/ViewCity.xhtml"  />
+                                                    <p:menuitem value="ΠΡΟΒΟΛΗ ΛΕΟΦΩΡΕΙΩΝ" url="/bus/ViewBus.xhtml"  />
+                                                    <p:menuitem value="ΠΡΟΒΟΛΗ ΔΙΑΔΙΚΤΥΑΚΩΝ ΧΡΗΣΤΩΝ" url="/euser/ViewEuser.xhtml"  />
+                                                    <p:menuitem value="ΠΡΟΒΟΛΗ ΟΔΗΓΩΝ" url="/busdriver/ViewBusdriver.xhtml"  />
+                                                </p:submenu>
+                                            </p:menubar>
+                                        </h:form>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -263,7 +269,7 @@
                                 </div>
                             </div> 
                         </div>
-                        
+
                     </div>
                 </div>
             </section>

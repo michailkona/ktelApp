@@ -8,6 +8,33 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+        <h:form >
+            <p:menubar>
+                <p:submenu label="MENU" >
+                     
+                    <p:menuitem value="ΑΡΧΙΚΗ" url="/index.xhtml#main-header"  />
+                    <p:menuitem value="Η ΕΤΑΙΡΕΙΑ" url="/index.xhtml#feature"  />
+                    <p:menuitem value="ΥΠΗΡΕΣΙΕΣ" url="/index.xhtml#service"  />
+                    <p:menuitem value="ΕΓΚΑΤΑΣΤΑΣΕΙΣ" url="/index.xhtml#blog"  />
+                    <p:menuitem value="ΕΠΙΚΟΙΝΩΝΙΑ" url="/index.xhtml#contact"  />
+                   
+                </p:submenu>
+                
+                <p:submenu label="ΠΙΝΑΚΕΣ" >
+                    <p:menuitem value="ΔΡΟΜΟΛΟΓΙΑ" url="/dromologio/ViewDromologio.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΡΟΛΩΝ" url="/roles/ViewRoles.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΧΡΗΣΤΩΝ" url="/user/ViewUsers.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΠΟΛΕΩΝ" url="/city/ViewCity.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΛΕΟΦΩΡΕΙΩΝ" url="/bus/ViewBus.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΔΙΑΔΙΚΤΥΑΚΩΝ ΧΡΗΣΤΩΝ" url="/euser/ViewEuser.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΟΔΗΓΩΝ" url="/busdriver/ViewBusdriver.xhtml"  />
+                </p:submenu>
+                
+                 
+                
+            </p:menubar>
+        </h:form>
+        
         <h:form id="form">
             <p:growl id="msgs"  showDetail="false"/>
 
@@ -73,8 +100,8 @@
                     <p:commandButton process="datatable" update=":form:Insert" 
                                      icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" oncomplete="PF('InsertDialog').show()" />
 
-                                         <p:commandButton process="datatable" update=":form:Delete" 
-                                                         icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" oncomplete="PF('DeleteDialog').show()" />
+                    <p:commandButton process="datatable" update=":form:Delete" 
+                                     icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" oncomplete="PF('DeleteDialog').show()" />
 
 
 
@@ -140,7 +167,7 @@
 
                         <h:outputText value="cityByCityCityIdAfiksi" />
                         <h:inputText value="#{dromologioManagedBean.cityByCityCityIdAfiksi}" />
-                        
+
                         <h:outputText value="busBusId" />
                         <h:inputText value="#{dromologioManagedBean.busBusId}" />
 
@@ -154,13 +181,13 @@
                 </p:outputPanel>
             </p:dialog>
 
-            
+
             <!-- παραθυρο για διαγραφη -->
-             <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="Delete" style="text-align:center;">
                     <p:panelGrid  columns="2"  columnClasses="label,value">
 
-                         <h:outputText value="ΕΠΙΘΕΤΟ" />
+                        <h:outputText value="ΕΠΙΘΕΤΟ" />
                         <h:outputText value="#{dromologioManagedBean.selectedDromologio.dromologioDate}" />                
 
                         <h:outputText value="ΟΝΟΜΑ" />
@@ -180,11 +207,11 @@
 
                         <h:outputText value="E-MAIL" />
                         <h:outputText value="#{dromologioManagedBean.selectedDromologio.cityByCityCityIdAfiksi.cityName}" />
-                        
+
                         <p:commandButton update=":form " icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" actionListener="#{dromologioManagedBean.delete(dromologioManagedBean.selectedDromologio.id)}" 
                                          oncomplete="PF('DeleteDialog').hide()" />
-                        
-                        
+
+
                         <h:outputText  />
                     </p:panelGrid>
                 </p:outputPanel>

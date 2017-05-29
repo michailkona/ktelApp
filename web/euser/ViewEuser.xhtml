@@ -8,6 +8,34 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
+        
+        <h:form >
+            <p:menubar>
+                <p:submenu label="MENU" >
+                     
+                    <p:menuitem value="ΑΡΧΙΚΗ" url="/index.xhtml#main-header"  />
+                    <p:menuitem value="Η ΕΤΑΙΡΕΙΑ" url="/index.xhtml#feature"  />
+                    <p:menuitem value="ΥΠΗΡΕΣΙΕΣ" url="/index.xhtml#service"  />
+                    <p:menuitem value="ΕΓΚΑΤΑΣΤΑΣΕΙΣ" url="/index.xhtml#blog"  />
+                    <p:menuitem value="ΕΠΙΚΟΙΝΩΝΙΑ" url="/index.xhtml#contact"  />
+                   
+                </p:submenu>
+                
+                <p:submenu label="ΠΙΝΑΚΕΣ" >
+                    <p:menuitem value="ΔΡΟΜΟΛΟΓΙΑ" url="/dromologio/ViewDromologio.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΡΟΛΩΝ" url="/roles/ViewRoles.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΧΡΗΣΤΩΝ" url="/user/ViewUsers.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΠΟΛΕΩΝ" url="/city/ViewCity.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΛΕΟΦΩΡΕΙΩΝ" url="/bus/ViewBus.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΔΙΑΔΙΚΤΥΑΚΩΝ ΧΡΗΣΤΩΝ" url="/euser/ViewEuser.xhtml"  />
+                    <p:menuitem value="ΠΡΟΒΟΛΗ ΟΔΗΓΩΝ" url="/busdriver/ViewBusdriver.xhtml"  />
+                </p:submenu>
+                
+                 
+                
+            </p:menubar>
+        </h:form>
+        
         <h:form id="form">
             <p:growl id="msgs"  showDetail="false"/>
 
