@@ -8,7 +8,7 @@ package model;
 public class Busdriver  implements java.io.Serializable {
 
 
-     private BusdriverId id;
+     private Integer busdriverId;
      private Bus bus;
      private String busdriverLastname;
      private String busdriverFirstname;
@@ -21,8 +21,7 @@ public class Busdriver  implements java.io.Serializable {
     public Busdriver() {
     }
 
-    public Busdriver(BusdriverId id, Bus bus, String busdriverLastname, String busdriverFirstname, String busdriverAdt, int busdriverAfm, String busdriverArithmosDiplomatos, String busdriverPhone, String busdriverAddress) {
-       this.id = id;
+    public Busdriver(Bus bus, String busdriverLastname, String busdriverFirstname, String busdriverAdt, int busdriverAfm, String busdriverArithmosDiplomatos, String busdriverPhone, String busdriverAddress) {
        this.bus = bus;
        this.busdriverLastname = busdriverLastname;
        this.busdriverFirstname = busdriverFirstname;
@@ -33,12 +32,12 @@ public class Busdriver  implements java.io.Serializable {
        this.busdriverAddress = busdriverAddress;
     }
    
-    public BusdriverId getId() {
-        return this.id;
+    public Integer getBusdriverId() {
+        return this.busdriverId;
     }
     
-    public void setId(BusdriverId id) {
-        this.id = id;
+    public void setBusdriverId(Integer busdriverId) {
+        this.busdriverId = busdriverId;
     }
     public Bus getBus() {
         return this.bus;

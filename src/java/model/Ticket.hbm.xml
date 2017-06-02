@@ -1,31 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28 ??? 2017 4:28:42 ?? by Hibernate Tools 4.3.1 -->
+<!-- Generated 31 ??? 2017 8:01:55 ?? by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.Ticket" table="ticket" catalog="kteldb" optimistic-lock="version">
-        <composite-id name="id" class="model.TicketId">
-            <key-property name="ticketId" type="int">
-                <column name="ticket_id" />
-            </key-property>
-            <key-property name="dromologioDromologioId" type="int">
-                <column name="dromologio_dromologio_id" />
-            </key-property>
-            <key-property name="dromologioCityCityIdAnaxorisi" type="int">
-                <column name="dromologio_city_city_id_anaxorisi" />
-            </key-property>
-            <key-property name="dromologioCityCityIdAfiksi" type="int">
-                <column name="dromologio_city_city_id_afiksi" />
-            </key-property>
-            <key-property name="dromologioBusBusId" type="int">
-                <column name="dromologio_bus_bus_id" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="dromologio" class="model.Dromologio" update="false" insert="false" fetch="select">
-            <column name="dromologio_dromologio_id" not-null="true" />
-            <column name="dromologio_city_city_id_anaxorisi" not-null="true" />
-            <column name="dromologio_city_city_id_afiksi" not-null="true" />
-            <column name="dromologio_bus_bus_id" not-null="true" />
+        <id name="ticketId" type="java.lang.Integer">
+            <column name="ticket_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="dromologio" class="model.Dromologio" fetch="select">
+            <column name="dromologio_id" not-null="true" />
         </many-to-one>
         <property name="ticketType" type="string">
             <column name="ticket_type" length="45" not-null="true" />
@@ -33,8 +17,8 @@
         <property name="ticketTypeEkptosi" type="string">
             <column name="ticket_type_ekptosi" length="45" not-null="true" />
         </property>
-        <property name="ticketDateEkdosi" type="date">
-            <column name="ticket_date_ekdosi" length="10" not-null="true" />
+        <property name="ticketDateEkdosi" type="timestamp">
+            <column name="ticket_date_ekdosi" length="19" not-null="true" />
         </property>
         <property name="ticketCategoryEkdosis" type="string">
             <column name="ticket_category_ekdosis" length="45" not-null="true" />

@@ -8,19 +8,19 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        
+
         <h:form >
             <p:menubar>
                 <p:submenu label="MENU" >
-                     
+
                     <p:menuitem value="ΑΡΧΙΚΗ" url="/index.xhtml#main-header"  />
                     <p:menuitem value="Η ΕΤΑΙΡΕΙΑ" url="/index.xhtml#feature"  />
                     <p:menuitem value="ΥΠΗΡΕΣΙΕΣ" url="/index.xhtml#service"  />
                     <p:menuitem value="ΕΓΚΑΤΑΣΤΑΣΕΙΣ" url="/index.xhtml#blog"  />
                     <p:menuitem value="ΕΠΙΚΟΙΝΩΝΙΑ" url="/index.xhtml#contact"  />
-                   
+
                 </p:submenu>
-                
+
                 <p:submenu label="ΠΙΝΑΚΕΣ" >
                     <p:menuitem value="ΔΡΟΜΟΛΟΓΙΑ" url="/dromologio/ViewDromologio.xhtml"  />
                     <p:menuitem value="ΠΡΟΒΟΛΗ ΡΟΛΩΝ" url="/roles/ViewRoles.xhtml"  />
@@ -30,12 +30,12 @@
                     <p:menuitem value="ΠΡΟΒΟΛΗ ΔΙΑΔΙΚΤΥΑΚΩΝ ΧΡΗΣΤΩΝ" url="/euser/ViewEuser.xhtml"  />
                     <p:menuitem value="ΠΡΟΒΟΛΗ ΟΔΗΓΩΝ" url="/busdriver/ViewBusdriver.xhtml"  />
                 </p:submenu>
-                
-                 
-                
+
+
+
             </p:menubar>
         </h:form>
-        
+
         <h:form id="form">
             <p:growl id="msgs"  showDetail="false"/>
 
@@ -72,45 +72,26 @@
                     <h:outputText value="#{city.cityName}"></h:outputText>
                 </p:column>
 
-               
+
                 <f:facet name="footer">
-                    
-                     <p:commandButton process="datatable" update=":form:View" 
+
+                    <p:commandButton process="datatable" update=":form:View" 
                                      icon="ui-icon-search" value="ΠΡΟΒΟΛΗ" oncomplete="PF('ViewDialog').show()" />
-                     
-                    <p:commandButton process="datatable" update=":form:Insert" 
+
+                    <p:commandButton process="datatable" update=":insertForm:Insert" 
                                      icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" oncomplete="PF('InsertDialog').show()" />
-                    
-                     <p:commandButton process="datatable" update=":form:Delete" 
+
+                    <p:commandButton process="datatable" update=":form:Delete" 
                                      icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" oncomplete="PF('DeleteDialog').show()" />
-                    
-                   
+
+
 
                 </f:facet>
 
 
             </p:dataTable>
-            
-            <!-- παραθυρο για εισαγωγη φορμας-->
-            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                <p:outputPanel id="Insert" style="text-align:center;">
-                    
-                    <p:panelGrid  columns="2"  columnClasses="label,value">
 
 
-                        <h:outputText value="ΟΝΟΜΑ" />
-                        <h:inputText  id="cityName" value="#{cityManagedBean.cityToInsert.cityName}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
-                        <p:message for="cityName" />
-                      
-                                 
-                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{cityManagedBean.insert()}" 
-                                         oncomplete="PF('InsertDialog').hide()" validateClient="true"/>
-
-                    </p:panelGrid>
-                </p:outputPanel>
-            </p:dialog>
-            
             <!-- παραθυρο για προβολη -->
             <p:dialog header="ΠΡΟΒΟΛΗ" widgetVar="ViewDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="View" style="text-align:center;">
@@ -122,10 +103,10 @@
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
-            
-            
+
+
             <!-- παραθυρο για διαγραφη -->
-             <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="Delete" style="text-align:center;">
                     <p:panelGrid  columns="2"  columnClasses="label,value">
 
@@ -133,18 +114,41 @@
                         <h:outputText value="ΟΝΟΜΑ" />
                         <h:outputText value="#{cityManagedBean.selectedCity.cityName}" />
 
-                        
-                        
+
+
                         <p:commandButton update=":form " icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" actionListener="#{cityManagedBean.delete()}" 
                                          oncomplete="PF('DeleteDialog').hide()" />
-                        
-                        
+
+
                         <h:outputText  />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+
+        <!-- παραθυρο για εισαγωγη φορμας-->
+        <h:form id="insertForm">
+            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Insert" style="text-align:center;">
+
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+
+                        <h:outputText value="ΟΝΟΜΑ" />
+                        <h:inputText  id="cityName" value="#{cityManagedBean.cityToInsert.cityName}"
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="cityName" />
+
+
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{cityManagedBean.insert()}" 
+                                          validateClient="true"/>
+
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
 
         </h:form>
+
     </h:body>
 </html>
 

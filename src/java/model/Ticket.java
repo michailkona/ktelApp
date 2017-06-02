@@ -9,7 +9,7 @@ import java.util.Date;
 public class Ticket  implements java.io.Serializable {
 
 
-     private TicketId id;
+     private Integer ticketId;
      private Dromologio dromologio;
      private String ticketType;
      private String ticketTypeEkptosi;
@@ -20,8 +20,7 @@ public class Ticket  implements java.io.Serializable {
     public Ticket() {
     }
 
-    public Ticket(TicketId id, Dromologio dromologio, String ticketType, String ticketTypeEkptosi, Date ticketDateEkdosi, String ticketCategoryEkdosis, String ticketPrice) {
-       this.id = id;
+    public Ticket(Dromologio dromologio, String ticketType, String ticketTypeEkptosi, Date ticketDateEkdosi, String ticketCategoryEkdosis, String ticketPrice) {
        this.dromologio = dromologio;
        this.ticketType = ticketType;
        this.ticketTypeEkptosi = ticketTypeEkptosi;
@@ -30,12 +29,12 @@ public class Ticket  implements java.io.Serializable {
        this.ticketPrice = ticketPrice;
     }
    
-    public TicketId getId() {
-        return this.id;
+    public Integer getTicketId() {
+        return this.ticketId;
     }
     
-    public void setId(TicketId id) {
-        this.id = id;
+    public void setTicketId(Integer ticketId) {
+        this.ticketId = ticketId;
     }
     public Dromologio getDromologio() {
         return this.dromologio;

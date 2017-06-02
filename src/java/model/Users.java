@@ -8,7 +8,7 @@ package model;
 public class Users  implements java.io.Serializable {
 
 
-     private UsersId id;
+     private Integer userId;
      private Roles roles;
      private String userLastname;
      private String userFirstname;
@@ -23,8 +23,7 @@ public class Users  implements java.io.Serializable {
     public Users() {
     }
 
-    public Users(UsersId id, Roles roles, String userLastname, String userFirstname, String userAdt, int userAfm, String userPhone, String userAddress, String userEmail, String userUsername, String userPassword) {
-       this.id = id;
+    public Users(Roles roles, String userLastname, String userFirstname, String userAdt, int userAfm, String userPhone, String userAddress, String userEmail, String userUsername, String userPassword) {
        this.roles = roles;
        this.userLastname = userLastname;
        this.userFirstname = userFirstname;
@@ -37,12 +36,12 @@ public class Users  implements java.io.Serializable {
        this.userPassword = userPassword;
     }
    
-    public UsersId getId() {
-        return this.id;
+    public Integer getUserId() {
+        return this.userId;
     }
     
-    public void setId(UsersId id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
     public Roles getRoles() {
         return this.roles;

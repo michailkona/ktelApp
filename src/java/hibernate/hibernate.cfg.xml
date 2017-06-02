@@ -40,24 +40,23 @@ made subject to such option by the copyright holder.
 Contributor(s):
 -->
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/kteldb?zeroDateTimeBehavior=convertToNull&amp;useSSL=false</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">ntina</property>
-        <property name="hibernate.current_session_context_class">thread</property>
-        <property name="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</property>
-        <property name="hibernate.enable_lazy_load_no_trans">true</property>
-
-        <mapping resource="model/Bus.hbm.xml"/>
-        <mapping resource="model/Roles.hbm.xml"/>
-        <mapping resource="model/Users.hbm.xml"/>
-        <mapping resource="model/Ticket.hbm.xml"/>
-        <mapping resource="model/Busdriver.hbm.xml"/>
-        <mapping resource="model/Euser.hbm.xml"/>
-        <mapping resource="model/Dromologio.hbm.xml"/>
-        <mapping resource="model/Dema.hbm.xml"/>
-        <mapping resource="model/City.hbm.xml"/>
-    </session-factory>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/kteldb?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">ntina</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory</property>
+     <property name="hibernate.enable_lazy_load_no_trans">true</property>
+    <mapping resource="model/Bus.hbm.xml"/>
+    <mapping resource="model/Roles.hbm.xml"/>
+    <mapping resource="model/Users.hbm.xml"/>
+    <mapping resource="model/Ticket.hbm.xml"/>
+    <mapping resource="model/Busdriver.hbm.xml"/>
+    <mapping resource="model/Euser.hbm.xml"/>
+    <mapping resource="model/Dromologio.hbm.xml"/>
+    <mapping resource="model/Dema.hbm.xml"/>
+    <mapping resource="model/City.hbm.xml"/>
+  </session-factory>
 </hibernate-configuration>

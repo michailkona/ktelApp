@@ -8,19 +8,19 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        
+
         <h:form >
             <p:menubar>
                 <p:submenu label="MENU" >
-                     
+
                     <p:menuitem value="ΑΡΧΙΚΗ" url="/index.xhtml#main-header"  />
                     <p:menuitem value="Η ΕΤΑΙΡΕΙΑ" url="/index.xhtml#feature"  />
                     <p:menuitem value="ΥΠΗΡΕΣΙΕΣ" url="/index.xhtml#service"  />
                     <p:menuitem value="ΕΓΚΑΤΑΣΤΑΣΕΙΣ" url="/index.xhtml#blog"  />
                     <p:menuitem value="ΕΠΙΚΟΙΝΩΝΙΑ" url="/index.xhtml#contact"  />
-                   
+
                 </p:submenu>
-                
+
                 <p:submenu label="ΠΙΝΑΚΕΣ" >
                     <p:menuitem value="ΔΡΟΜΟΛΟΓΙΑ" url="/dromologio/ViewDromologio.xhtml"  />
                     <p:menuitem value="ΠΡΟΒΟΛΗ ΡΟΛΩΝ" url="/roles/ViewRoles.xhtml"  />
@@ -30,12 +30,12 @@
                     <p:menuitem value="ΠΡΟΒΟΛΗ ΔΙΑΔΙΚΤΥΑΚΩΝ ΧΡΗΣΤΩΝ" url="/euser/ViewEuser.xhtml"  />
                     <p:menuitem value="ΠΡΟΒΟΛΗ ΟΔΗΓΩΝ" url="/busdriver/ViewBusdriver.xhtml"  />
                 </p:submenu>
-                
-                 
-                
+
+
+
             </p:menubar>
         </h:form>
-        
+
         <h:form id="form">
             <p:growl id="msgs"  showDetail="false"/>
 
@@ -71,79 +71,42 @@
                 <p:column headerText="ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ" filterBy="#{bus.busArithmosKikloforias}">
                     <h:outputText value="#{bus.busArithmosKikloforias}"></h:outputText>
                 </p:column>
-                
+
                 <p:column headerText="ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ" filterBy="#{bus.busArithmosTheseon}">
                     <h:outputText value="#{bus.busArithmosTheseon}"></h:outputText>
                 </p:column>
-                
+
                 <p:column headerText="ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ" filterBy="#{bus.busTypebus}">
                     <h:outputText value="#{bus.busTypebus}"></h:outputText>
                 </p:column>
-                
+
                 <p:column headerText="ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ" filterBy="#{bus.busXoritikotitaDematon}">
                     <h:outputText value="#{bus.busXoritikotitaDematon}"></h:outputText>
                 </p:column>
-                
-              
 
-               
+
+
+
                 <f:facet name="footer">
-                    
-                     <p:commandButton process="datatable" update=":form:View" 
+
+                    <p:commandButton process="datatable" update=":form:View" 
                                      icon="ui-icon-search" value="ΠΡΟΒΟΛΗ" oncomplete="PF('ViewDialog').show()" />
-                     
-                    <p:commandButton process="datatable" update=":form:Insert" 
+
+                    <p:commandButton process="datatable" update=":insertForm:Insert" 
                                      icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" oncomplete="PF('InsertDialog').show()" />
-                    
-                     <p:commandButton process="datatable" update=":form:Delete" 
+
+                    <p:commandButton process="datatable" update=":form:Delete" 
                                      icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" oncomplete="PF('DeleteDialog').show()" />
-                    
-                   
+
+
 
                 </f:facet>
 
 
             </p:dataTable>
-            
-            <!-- παραθυρο για εισαγωγη φορμας-->
-            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                <p:outputPanel id="Insert" style="text-align:center;">
-                    
-                    <p:panelGrid  columns="2"  columnClasses="label,value">
 
 
-                        <h:outputText value="ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ" />
-                        <h:inputText  id="busArithmosKikloforias" value="#{busManagedBean.busToInsert.busArithmosKikloforias}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
-                        
-                        
-                        <h:outputText value="ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ" />
-                        <p:inputMask  id="busArithmosTheseon" value="#{busManagedBean.busToInsert.busArithmosTheseon}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"
-                                     mask="99"/>
-                       
-                        
-                        <h:outputText value="ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ" />
-                        <h:inputText  id="busTypebus" value="#{busManagedBean.busToInsert.busTypebus}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
-                        
-                        
-                        <h:outputText value="ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ" />
-                        <p:inputMask  id="busXoritikotitaDematon" value="#{busManagedBean.busToInsert.busXoritikotitaDematon}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"
-                                     mask="99"/>
-                        
-                        
-                        
-                      
-                                 
-                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{busManagedBean.insert()}" 
-                                         oncomplete="PF('InsertDialog').hide()" validateClient="true"/>
 
-                    </p:panelGrid>
-                </p:outputPanel>
-            </p:dialog>
-            
             <!-- παραθυρο για προβολη -->
             <p:dialog header="ΠΡΟΒΟΛΗ" widgetVar="ViewDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="View" style="text-align:center;">
@@ -151,53 +114,91 @@
 
                         <h:outputText value="ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busArithmosKikloforias}" />
-                        
+
                         <h:outputText value="ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busArithmosTheseon}" />
-                        
+
                         <h:outputText value="ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busTypebus}" />
-                        
+
                         <h:outputText value="ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busXoritikotitaDematon}" />
-                        
-                       
+
+
 
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
-            
-            
+
+
             <!-- παραθυρο για διαγραφη -->
-             <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="Delete" style="text-align:center;">
                     <p:panelGrid  columns="2"  columnClasses="label,value">
 
 
                         <h:outputText value="ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busArithmosKikloforias}" />
-                        
-                         <h:outputText value="ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ" />
+
+                        <h:outputText value="ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busArithmosTheseon}" />
-                        
+
                         <h:outputText value="ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busTypebus}" />
-                        
+
                         <h:outputText value="ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ" />
                         <h:outputText value="#{busManagedBean.selectedBus.busXoritikotitaDematon}" />
 
-                        
-                        
+
+
                         <p:commandButton update=":form " icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" actionListener="#{busManagedBean.delete()}" 
                                          oncomplete="PF('DeleteDialog').hide()" />
-                        
+
                         <h:outputText  />
 
-                        
+
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
+        </h:form>
 
+
+        <!-- παραθυρο για εισαγωγη φορμας-->
+        <h:form id="insertForm">
+            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Insert" style="text-align:center;">
+
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+
+                        <h:outputText value="ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ" />
+                        <h:inputText  id="busArithmosKikloforias" value="#{busManagedBean.busToInsert.busArithmosKikloforias}"
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ ΑΡΙΘΜΟΣ ΚΥΚΛΟΦΟΡΙΑΣ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+
+
+                        <h:outputText value="ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ" />
+                        <p:inputMask  id="busArithmosTheseon" value="#{busManagedBean.busToInsert.busArithmosTheseon}"
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ ΑΡΙΘΜΟΣ ΘΕΣΕΩΝ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"
+                                      mask="99"/>
+
+
+                        <h:outputText value="ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ" />
+                        <h:inputText  id="busTypebus" value="#{busManagedBean.busToInsert.busTypebus}"
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ ΤΥΠΟΣ ΛΕΩΦΟΡΕΙΟΥ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+
+
+                        <h:outputText value="ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ" />
+                        <p:inputMask  id="busXoritikotitaDematon" value="#{busManagedBean.busToInsert.busXoritikotitaDematon}"
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ ΧΩΡΙΤΙΚΟΤΗΤΑ ΔΕΜΑΤΩΝ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"
+                                      mask="99"/>
+
+
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{busManagedBean.insert()}" 
+                                          validateClient="true"/>
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
         </h:form>
     </h:body>
 </html>

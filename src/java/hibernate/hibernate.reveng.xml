@@ -41,13 +41,13 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="kteldb"/>
+  <table-filter match-name="dromologio"/>
+  <table-filter match-name="euser"/>
+  <table-filter match-name="users"/>
+  <table-filter match-name="bus"/>
   <table-filter match-name="ticket"/>
+  <table-filter match-name="roles"/>
+  <table-filter match-name="dema"/>
   <table-filter match-name="city"/>
   <table-filter match-name="busdriver"/>
-  <table-filter match-name="dromologio"/>
-  <table-filter match-name="roles"/>
-  <table-filter match-name="users"/>
-  <table-filter match-name="dema"/>
-  <table-filter match-name="bus"/>
-  <table-filter match-name="euser"/>
 </hibernate-reverse-engineering>

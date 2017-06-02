@@ -14,9 +14,9 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import model.Bus;
 import model.Busdriver;
-import model.BusdriverId;
-import model.DromologioId;
+import org.hibernate.Query;
 import org.hibernate.Session;
 
 /**
@@ -28,10 +28,12 @@ import org.hibernate.Session;
 public class BusDriverManagedBean implements Serializable{
 
     private List<Busdriver> busDriverList = new ArrayList();
-    private Busdriver selectedBusDriver; //epilogi apo to pinaka me xeraki
+    private Busdriver selectedBusDriver; //epilogi eggrafis apo to pinaka 
     private List<Busdriver> filteredBusDriverList=new ArrayList();
     private Busdriver busDriverToInsert=new Busdriver();
-     private int busBusId;
+    
+    private String busString;
+    private List<Bus> busList= new ArrayList();
     
      
 
@@ -66,7 +68,6 @@ public class BusDriverManagedBean implements Serializable{
     }
     
     
-
     public List<Busdriver> getBusdriver() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -85,20 +86,40 @@ public class BusDriverManagedBean implements Serializable{
 
     }
     
+     public List<Bus> getBus() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+
+            busList = session.createCriteria(Bus.class).list();
+
+            session.getTransaction().commit();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        session.close();
+        return busList;
+
+    }
+    
     public void insert() throws IOException{
         
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
+            Bus bus = new Bus();
             
-            BusdriverId busdriverId=new BusdriverId();
+            String stringQuery = "From Bus b Where b.busArithmosKikloforias= :busArithmosKikloforias";
+            Query query = session.createQuery(stringQuery);
+            query.setParameter("busArithmosKikloforias", busString);
+            List<Bus> result = query.list();
             
-            busdriverId.setBusBusId(busBusId);
+            bus.setBusId(result.get(0).getBusId());
+            busDriverToInsert.setBus(bus);
             
-            
-          busDriverToInsert.setId(busdriverId);
-            
-            
+         
             session.save(busDriverToInsert);
 
             session.getTransaction().commit();
@@ -113,15 +134,13 @@ public class BusDriverManagedBean implements Serializable{
      
     }
     
-    public void delete(BusdriverId busdriverId) throws IOException{
+    public void delete() throws IOException{
         
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
             session.beginTransaction();
             
-            selectedBusDriver.setId(busdriverId);
             
-         
             session.delete(selectedBusDriver);
 
             session.getTransaction().commit();
@@ -173,14 +192,25 @@ public class BusDriverManagedBean implements Serializable{
         this.busDriverToInsert = busDriverToInsert;
     }
 
-    public int getBusBusId() {
-        return busBusId;
+    public String getBusString() {
+        return busString;
     }
 
-    public void setBusBusId(int busBusId) {
-        this.busBusId = busBusId;
+    public void setBusString(String busString) {
+        this.busString = busString;
     }
 
+    public List<Bus> getBusList() {
+        return busList;
+    }
+
+    public void setBusList(List<Bus> busList) {
+        this.busList = busList;
+    }
+
+    
+
+    
    
     
 }

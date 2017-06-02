@@ -11,10 +11,10 @@ import java.util.Set;
 public class Dromologio  implements java.io.Serializable {
 
 
-     private DromologioId id;
+     private Integer dromologioId;
      private Bus bus;
-     private City cityByCityCityIdAnaxorisi;
-     private City cityByCityCityIdAfiksi;
+     private City cityByCityIdAnaxorisi;
+     private City cityByCityIdAfiksi;
      private Date dromologioDate;
      private Date dromologioTimeAnaxorisi;
      private Date dromologioTimeAfiksi;
@@ -27,22 +27,20 @@ public class Dromologio  implements java.io.Serializable {
     }
 
 	
-    public Dromologio(DromologioId id, Bus bus, City cityByCityCityIdAnaxorisi, City cityByCityCityIdAfiksi, Date dromologioDate, Date dromologioTimeAnaxorisi, Date dromologioTimeAfiksi, String dromologioTypeDromologio, String dromologioPrice) {
-        this.id = id;
+    public Dromologio(Bus bus, City cityByCityIdAnaxorisi, City cityByCityIdAfiksi, Date dromologioDate, Date dromologioTimeAnaxorisi, Date dromologioTimeAfiksi, String dromologioTypeDromologio, String dromologioPrice) {
         this.bus = bus;
-        this.cityByCityCityIdAnaxorisi = cityByCityCityIdAnaxorisi;
-        this.cityByCityCityIdAfiksi = cityByCityCityIdAfiksi;
+        this.cityByCityIdAnaxorisi = cityByCityIdAnaxorisi;
+        this.cityByCityIdAfiksi = cityByCityIdAfiksi;
         this.dromologioDate = dromologioDate;
         this.dromologioTimeAnaxorisi = dromologioTimeAnaxorisi;
         this.dromologioTimeAfiksi = dromologioTimeAfiksi;
         this.dromologioTypeDromologio = dromologioTypeDromologio;
         this.dromologioPrice = dromologioPrice;
     }
-    public Dromologio(DromologioId id, Bus bus, City cityByCityCityIdAnaxorisi, City cityByCityCityIdAfiksi, Date dromologioDate, Date dromologioTimeAnaxorisi, Date dromologioTimeAfiksi, String dromologioTypeDromologio, String dromologioPrice, Set tickets, Set demas) {
-       this.id = id;
+    public Dromologio(Bus bus, City cityByCityIdAnaxorisi, City cityByCityIdAfiksi, Date dromologioDate, Date dromologioTimeAnaxorisi, Date dromologioTimeAfiksi, String dromologioTypeDromologio, String dromologioPrice, Set tickets, Set demas) {
        this.bus = bus;
-       this.cityByCityCityIdAnaxorisi = cityByCityCityIdAnaxorisi;
-       this.cityByCityCityIdAfiksi = cityByCityCityIdAfiksi;
+       this.cityByCityIdAnaxorisi = cityByCityIdAnaxorisi;
+       this.cityByCityIdAfiksi = cityByCityIdAfiksi;
        this.dromologioDate = dromologioDate;
        this.dromologioTimeAnaxorisi = dromologioTimeAnaxorisi;
        this.dromologioTimeAfiksi = dromologioTimeAfiksi;
@@ -52,12 +50,12 @@ public class Dromologio  implements java.io.Serializable {
        this.demas = demas;
     }
    
-    public DromologioId getId() {
-        return this.id;
+    public Integer getDromologioId() {
+        return this.dromologioId;
     }
     
-    public void setId(DromologioId id) {
-        this.id = id;
+    public void setDromologioId(Integer dromologioId) {
+        this.dromologioId = dromologioId;
     }
     public Bus getBus() {
         return this.bus;
@@ -66,19 +64,19 @@ public class Dromologio  implements java.io.Serializable {
     public void setBus(Bus bus) {
         this.bus = bus;
     }
-    public City getCityByCityCityIdAnaxorisi() {
-        return this.cityByCityCityIdAnaxorisi;
+    public City getCityByCityIdAnaxorisi() {
+        return this.cityByCityIdAnaxorisi;
     }
     
-    public void setCityByCityCityIdAnaxorisi(City cityByCityCityIdAnaxorisi) {
-        this.cityByCityCityIdAnaxorisi = cityByCityCityIdAnaxorisi;
+    public void setCityByCityIdAnaxorisi(City cityByCityIdAnaxorisi) {
+        this.cityByCityIdAnaxorisi = cityByCityIdAnaxorisi;
     }
-    public City getCityByCityCityIdAfiksi() {
-        return this.cityByCityCityIdAfiksi;
+    public City getCityByCityIdAfiksi() {
+        return this.cityByCityIdAfiksi;
     }
     
-    public void setCityByCityCityIdAfiksi(City cityByCityCityIdAfiksi) {
-        this.cityByCityCityIdAfiksi = cityByCityCityIdAfiksi;
+    public void setCityByCityIdAfiksi(City cityByCityIdAfiksi) {
+        this.cityByCityIdAfiksi = cityByCityIdAfiksi;
     }
     public Date getDromologioDate() {
         return this.dromologioDate;

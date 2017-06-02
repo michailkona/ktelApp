@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28 ??? 2017 4:28:42 ?? by Hibernate Tools 4.3.1 -->
+<!-- Generated 31 ??? 2017 8:01:55 ?? by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.City" table="city" catalog="kteldb" optimistic-lock="version">
         <id name="cityId" type="java.lang.Integer">
@@ -11,15 +11,15 @@
         <property name="cityName" type="string">
             <column name="city_name" length="45" not-null="true" unique="true" />
         </property>
-        <set name="dromologiosForCityCityIdAnaxorisi" table="dromologio" inverse="true" lazy="false" fetch="select">
+        <set name="dromologiosForCityIdAnaxorisi" table="dromologio" inverse="true" lazy="false" fetch="select">
             <key>
-                <column name="city_city_id_anaxorisi" not-null="true" />
+                <column name="city_id_anaxorisi" not-null="true" />
             </key>
             <one-to-many class="model.Dromologio" />
         </set>
-        <set name="dromologiosForCityCityIdAfiksi" table="dromologio" inverse="true" lazy="false" fetch="select">
+        <set name="dromologiosForCityIdAfiksi" table="dromologio" inverse="true" lazy="false" fetch="select">
             <key>
-                <column name="city_city_id_afiksi" not-null="true" />
+                <column name="city_id_afiksi" not-null="true" />
             </key>
             <one-to-many class="model.Dromologio" />
         </set>

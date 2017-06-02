@@ -8,19 +8,19 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        
+
         <h:form >
             <p:menubar>
                 <p:submenu label="MENU" >
-                     
+
                     <p:menuitem value="ΑΡΧΙΚΗ" url="/index.xhtml#main-header"  />
                     <p:menuitem value="Η ΕΤΑΙΡΕΙΑ" url="/index.xhtml#feature"  />
                     <p:menuitem value="ΥΠΗΡΕΣΙΕΣ" url="/index.xhtml#service"  />
                     <p:menuitem value="ΕΓΚΑΤΑΣΤΑΣΕΙΣ" url="/index.xhtml#blog"  />
                     <p:menuitem value="ΕΠΙΚΟΙΝΩΝΙΑ" url="/index.xhtml#contact"  />
-                   
+
                 </p:submenu>
-                
+
                 <p:submenu label="ΠΙΝΑΚΕΣ" >
                     <p:menuitem value="ΔΡΟΜΟΛΟΓΙΑ" url="/dromologio/ViewDromologio.xhtml"  />
                     <p:menuitem value="ΠΡΟΒΟΛΗ ΡΟΛΩΝ" url="/roles/ViewRoles.xhtml"  />
@@ -30,12 +30,12 @@
                     <p:menuitem value="ΠΡΟΒΟΛΗ ΔΙΑΔΙΚΤΥΑΚΩΝ ΧΡΗΣΤΩΝ" url="/euser/ViewEuser.xhtml"  />
                     <p:menuitem value="ΠΡΟΒΟΛΗ ΟΔΗΓΩΝ" url="/busdriver/ViewBusdriver.xhtml"  />
                 </p:submenu>
-                
-                 
-                
+
+
+
             </p:menubar>
         </h:form>
-        
+
         <h:form id="form">
             <p:growl id="msgs"  showDetail="false"/>
 
@@ -48,7 +48,7 @@
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                          rowsPerPageTemplate="5,10,15"
                          rowIndexVar="index"
-                         rowKey="#{busdriver.id}"
+                         rowKey="#{busdriver.busdriverId}"
                          selection="#{busDriverManagedBean.selectedBusDriver}"
                          selectionMode="single"
                          filteredValue="#{busDriverManagedBean.filteredBusDriverList}">
@@ -60,6 +60,7 @@
                     </p:outputPanel>
                 </f:facet>
 
+                <!--Προβολη πινακα-->
                 <p:column>
                     <f:facet name="header"> Α/Α</f:facet>#{index+1}
                 </p:column>
@@ -102,11 +103,11 @@
                     <p:commandButton process="datatable" update=":form:View" 
                                      icon="ui-icon-search" value="ΠΡΟΒΟΛΗ" oncomplete="PF('ViewDialog').show()" />
 
-                                      <p:commandButton process="datatable" update=":form:Insert" 
-                                                         icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" oncomplete="PF('InsertDialog').show()" />
-                    
-                                        <p:commandButton process="datatable" update=":form:Delete" 
-                                                         icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" oncomplete="PF('DeleteDialog').show()" />
+                    <p:commandButton process="datatable" update=":insertForm:Insert" 
+                                     icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" oncomplete="PF('InsertDialog').show()" />
+
+                    <p:commandButton process="datatable" update=":form:Delete" 
+                                     icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" oncomplete="PF('DeleteDialog').show()" />
 
 
 
@@ -149,52 +150,12 @@
             </p:dialog>
 
 
-            <!-- παραθυρο για εισαγωγη φορμας-->
-            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                <p:outputPanel id="Insert" style="text-align:center;">
-
-                    <p:panelGrid  columns="2"  columnClasses="label,value">
-
-                        <h:outputText value="busBusId" />
-                        <h:inputText value="#{busDriverManagedBean.busBusId}" />
-                        
-                        <h:outputText value="busdriverFirstname" />
-                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverFirstname}" />
-                        
-                        <h:outputText value="busdriverLastname" />
-                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverLastname}" />
-
-                        <h:outputText value="busdriverAdt" />
-                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverAdt}" />
-
-                        <h:outputText value="busdriverAfm" />
-                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverAfm}" />
-
-                        <h:outputText value="busdriverArithmosDiplomatos" />
-                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverArithmosDiplomatos}" />
-
-                        <h:outputText value="busdriverPhone" />
-                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverPhone}" />
-
-                        <h:outputText value="busdriverAddress" />
-                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverAddress}" />
-
-
-
-                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{busDriverManagedBean.insert()}" 
-                                         oncomplete="PF('InsertDialog').hide()" validateClient="true"/>
-
-                        <h:outputText  />
-                    </p:panelGrid>
-                </p:outputPanel>
-            </p:dialog>
-            
             <!-- παραθυρο για διαγραφη -->
-             <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+            <p:dialog header="ΔΙΑΓΡΑΦΗ" widgetVar="DeleteDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
                 <p:outputPanel id="Delete" style="text-align:center;">
                     <p:panelGrid  columns="2"  columnClasses="label,value">
 
-                         <h:outputText value="busArithmosKikloforias" />
+                        <h:outputText value="busArithmosKikloforias" />
                         <h:outputText value="#{busDriverManagedBean.selectedBusDriver.bus.busArithmosKikloforias}" />                
 
                         <h:outputText value="busdriverLastname" />
@@ -217,16 +178,72 @@
 
                         <h:outputText value="busdriverAddress" />
                         <h:outputText value="#{busDriverManagedBean.selectedBusDriver.busdriverAddress}" />
-                        
-                        <p:commandButton update=":form " icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" actionListener="#{busDriverManagedBean.delete(busDriverManagedBean.selectedBusDriver.id)}" 
+
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΔΙΑΓΡΑΦΗ" actionListener="#{busDriverManagedBean.delete()}" 
                                          oncomplete="PF('DeleteDialog').hide()" />
-                        
-                        
+
+
                         <h:outputText  />
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
-            
+        </h:form>
+
+
+        <!-- παραθυρο για εισαγωγη φορμας-->
+        <h:form id="insertForm">
+            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Insert" style="text-align:center;">
+
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
+
+                         <h:outputText value="busdriver" />
+                         <p:selectOneMenu id="advanced" value="#{busDriverManagedBean.busString}" panelStyle="width:180px"
+                                         effect="fade" var="t" style="width:160px" filter="true" 
+                                         filterMatchMode="startsWith"
+                                         required="true" requiredMessage="ΤΟ ΠΕΔΙΟ busdriver ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ">
+                             <f:selectItems value="#{busDriverManagedBean.bus}" var="busdriver" itemLabel="#{busdriver.busArithmosKikloforias}"
+                                            itemValue="#{busdriver.busArithmosKikloforias}" />
+
+                        </p:selectOneMenu>
+
+                        <h:outputText value="busdriverFirstname" />
+                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverFirstname}"
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ busdriverFirstname ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+
+                        <h:outputText value="busdriverLastname" />
+                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverLastname}"
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ busdriverLastname ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+
+                        <h:outputText value="busdriverAdt" />
+                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverAdt}"
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ busdriverAdt ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+
+                        <h:outputText value="busdriverAfm" />
+                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverAfm}" 
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ busdriverAfm ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+
+                        <h:outputText value="busdriverArithmosDiplomatos" />
+                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverArithmosDiplomatos}"
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ busdriverArithmosDiplomatos ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+
+                        <h:outputText value="busdriverPhone" />
+                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverPhone}"
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ busdriverPhone ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+
+                        <h:outputText value="busdriverAddress" />
+                        <h:inputText value="#{busDriverManagedBean.busDriverToInsert.busdriverAddress}"
+                                      required="true" requiredMessage="ΤΟ ΠΕΔΙΟ busdriverAddress ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+
+
+
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{busDriverManagedBean.insert()}" 
+                                        validateClient="true"/>
+
+                        <h:outputText  />
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
         </h:form>
     </h:body>
 </html>

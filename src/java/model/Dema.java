@@ -9,7 +9,7 @@ import java.util.Date;
 public class Dema  implements java.io.Serializable {
 
 
-     private DemaId id;
+     private Integer demaId;
      private Dromologio dromologio;
      private Date demaDateApostoli;
      private String demaLastnameApostolea;
@@ -23,8 +23,7 @@ public class Dema  implements java.io.Serializable {
     public Dema() {
     }
 
-    public Dema(DemaId id, Dromologio dromologio, Date demaDateApostoli, String demaLastnameApostolea, String demaFirstnameApostolea, String demaLastnameParalipti, String demaFirstnameParalipti, int demaTemaxia, String demaBaros, String demaPrice) {
-       this.id = id;
+    public Dema(Dromologio dromologio, Date demaDateApostoli, String demaLastnameApostolea, String demaFirstnameApostolea, String demaLastnameParalipti, String demaFirstnameParalipti, int demaTemaxia, String demaBaros, String demaPrice) {
        this.dromologio = dromologio;
        this.demaDateApostoli = demaDateApostoli;
        this.demaLastnameApostolea = demaLastnameApostolea;
@@ -36,12 +35,12 @@ public class Dema  implements java.io.Serializable {
        this.demaPrice = demaPrice;
     }
    
-    public DemaId getId() {
-        return this.id;
+    public Integer getDemaId() {
+        return this.demaId;
     }
     
-    public void setId(DemaId id) {
-        this.id = id;
+    public void setDemaId(Integer demaId) {
+        this.demaId = demaId;
     }
     public Dromologio getDromologio() {
         return this.dromologio;

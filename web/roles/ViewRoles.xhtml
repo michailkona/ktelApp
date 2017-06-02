@@ -5,7 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Role Table</title>
     </h:head>
     <h:body>
         
@@ -78,7 +78,7 @@
                      <p:commandButton process="datatable" update=":form:View" 
                                      icon="ui-icon-search" value="ΠΡΟΒΟΛΗ" oncomplete="PF('ViewDialog').show()" />
                      
-                    <p:commandButton process="datatable" update=":form:Insert" 
+                    <p:commandButton process="datatable" update=":insertForm:Insert" 
                                      icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" oncomplete="PF('InsertDialog').show()" />
                     
                      <p:commandButton process="datatable" update=":form:Delete" 
@@ -91,25 +91,7 @@
 
             </p:dataTable>
             
-            <!-- παραθυρο για εισαγωγη φορμας-->
-            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-                <p:outputPanel id="Insert" style="text-align:center;">
-                    
-                    <p:panelGrid  columns="2"  columnClasses="label,value">
-
-
-                        <h:outputText value="ΟΝΟΜΑ" />
-                        <h:inputText  id="roleName" value="#{rolesManagedBean.rolesToInsert.roleName}"
-                                     required="false" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
-                        <p:message for="roleName" />
-                      
-                                 
-                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{rolesManagedBean.insert()}" 
-                                         oncomplete="PF('InsertDialog').hide()" validateClient="true"/>
-
-                    </p:panelGrid>
-                </p:outputPanel>
-            </p:dialog>
+            
             
             <!-- παραθυρο για προβολη -->
             <p:dialog header="ΠΡΟΒΟΛΗ" widgetVar="ViewDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
@@ -143,7 +125,31 @@
                     </p:panelGrid>
                 </p:outputPanel>
             </p:dialog>
+        </h:form>
+        
+        
+          <!-- παραθυρο για εισαγωγη φορμας-->
+        <h:form id="insertForm">
+            <p:dialog header="ΕΙΣΑΓΩΓΗ" widgetVar="InsertDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="Insert" style="text-align:center;">
+                    
+                    <p:panelGrid  columns="2"  columnClasses="label,value">
 
+
+                        <h:outputText value="ΟΝΟΜΑ" />
+                        <h:inputText  id="roleName" value="#{rolesManagedBean.rolesToInsert.roleName}"
+                                     required="true" requiredMessage="ΤΟ ΠΕΔΙΟ ΟΝΟΜΑ ΕΙΝΑΙ ΥΠΟΧΡΕΩΤΙΚΟ"/>
+                        <p:message for="roleName" />
+                      
+                                 
+                        <p:commandButton update=":form " icon="ui-icon-search" value="ΕΙΣΑΓΩΓΗ" actionListener="#{rolesManagedBean.insert()}" 
+                                          validateClient="true"/>
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+            
+            
         </h:form>
     </h:body>
 </html>

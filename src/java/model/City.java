@@ -12,8 +12,8 @@ public class City  implements java.io.Serializable {
 
      private Integer cityId;
      private String cityName;
-     private Set dromologiosForCityCityIdAnaxorisi = new HashSet(0);
-     private Set dromologiosForCityCityIdAfiksi = new HashSet(0);
+     private Set dromologiosForCityIdAnaxorisi = new HashSet(0);
+     private Set dromologiosForCityIdAfiksi = new HashSet(0);
 
     public City() {
     }
@@ -22,10 +22,10 @@ public class City  implements java.io.Serializable {
     public City(String cityName) {
         this.cityName = cityName;
     }
-    public City(String cityName, Set dromologiosForCityCityIdAnaxorisi, Set dromologiosForCityCityIdAfiksi) {
+    public City(String cityName, Set dromologiosForCityIdAnaxorisi, Set dromologiosForCityIdAfiksi) {
        this.cityName = cityName;
-       this.dromologiosForCityCityIdAnaxorisi = dromologiosForCityCityIdAnaxorisi;
-       this.dromologiosForCityCityIdAfiksi = dromologiosForCityCityIdAfiksi;
+       this.dromologiosForCityIdAnaxorisi = dromologiosForCityIdAnaxorisi;
+       this.dromologiosForCityIdAfiksi = dromologiosForCityIdAfiksi;
     }
    
     public Integer getCityId() {
@@ -42,19 +42,19 @@ public class City  implements java.io.Serializable {
     public void setCityName(String cityName) {
         this.cityName = cityName;
     }
-    public Set getDromologiosForCityCityIdAnaxorisi() {
-        return this.dromologiosForCityCityIdAnaxorisi;
+    public Set getDromologiosForCityIdAnaxorisi() {
+        return this.dromologiosForCityIdAnaxorisi;
     }
     
-    public void setDromologiosForCityCityIdAnaxorisi(Set dromologiosForCityCityIdAnaxorisi) {
-        this.dromologiosForCityCityIdAnaxorisi = dromologiosForCityCityIdAnaxorisi;
+    public void setDromologiosForCityIdAnaxorisi(Set dromologiosForCityIdAnaxorisi) {
+        this.dromologiosForCityIdAnaxorisi = dromologiosForCityIdAnaxorisi;
     }
-    public Set getDromologiosForCityCityIdAfiksi() {
-        return this.dromologiosForCityCityIdAfiksi;
+    public Set getDromologiosForCityIdAfiksi() {
+        return this.dromologiosForCityIdAfiksi;
     }
     
-    public void setDromologiosForCityCityIdAfiksi(Set dromologiosForCityCityIdAfiksi) {
-        this.dromologiosForCityCityIdAfiksi = dromologiosForCityCityIdAfiksi;
+    public void setDromologiosForCityIdAfiksi(Set dromologiosForCityIdAfiksi) {
+        this.dromologiosForCityIdAfiksi = dromologiosForCityIdAfiksi;
     }
 
 

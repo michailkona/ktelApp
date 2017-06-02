@@ -26,7 +26,7 @@ import org.hibernate.Session;
 public class RolesManagedBean implements Serializable{
     
     private List<Roles> rolesList = new ArrayList();
-    private Roles selectedRole; //epilogi apo to pinaka me xeraki
+    private Roles selectedRole; //epilogi apo to pinaka 
     private List<Roles> filteredRolesList=new ArrayList();
     private Roles rolesToInsert=new Roles();
 

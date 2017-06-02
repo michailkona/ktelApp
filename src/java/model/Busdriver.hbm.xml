@@ -1,19 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 28 ??? 2017 4:28:42 ?? by Hibernate Tools 4.3.1 -->
+<!-- Generated 31 ??? 2017 8:01:55 ?? by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.Busdriver" table="busdriver" catalog="kteldb" optimistic-lock="version">
-        <composite-id name="id" class="model.BusdriverId">
-            <key-property name="busdriverId" type="int">
-                <column name="busdriver_id" />
-            </key-property>
-            <key-property name="busBusId" type="int">
-                <column name="bus_bus_id" />
-            </key-property>
-        </composite-id>
-        <many-to-one name="bus" class="model.Bus" update="false" insert="false" fetch="select">
-            <column name="bus_bus_id" not-null="true" />
+        <id name="busdriverId" type="java.lang.Integer">
+            <column name="busdriver_id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="bus" class="model.Bus" fetch="select">
+            <column name="bus_id" not-null="true" />
         </many-to-one>
         <property name="busdriverLastname" type="string">
             <column name="busdriver_lastname" length="45" not-null="true" />

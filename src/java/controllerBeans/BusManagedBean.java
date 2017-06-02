@@ -15,7 +15,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import model.Bus;
-import model.City;
+
 
 import org.hibernate.Session;
 
@@ -28,7 +28,7 @@ import org.hibernate.Session;
 public class BusManagedBean implements Serializable{
     
     private List<Bus> busList = new ArrayList();
-    private Bus selectedBus; //epilogi apo to pinaka me xeraki
+    private Bus selectedBus; //epilogi apo to pinaka 
     private List<Bus> filteredBusList=new ArrayList();
     private Bus busToInsert=new Bus();
 
