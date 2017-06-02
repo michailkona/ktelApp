@@ -27,7 +27,7 @@ import org.hibernate.Session;
 public class CityManagedBean implements Serializable{
     
     private List<City> cityList = new ArrayList();
-    private City selectedCity; //epilogi apo to pinaka me xeraki
+    private City selectedCity; //epilogi apo to pinaka 
     private List<City> filteredCityList=new ArrayList();
     private City cityToInsert=new City();
 

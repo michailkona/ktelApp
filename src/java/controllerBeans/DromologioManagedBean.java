@@ -29,7 +29,7 @@ import org.hibernate.Session;
 public class DromologioManagedBean implements Serializable{
 
     private List<Dromologio> dromologioList = new ArrayList();
-    private Dromologio selectedDromologio; //epilogi apo to pinaka me xeraki
+    private Dromologio selectedDromologio; //epilogi apo to pinaka 
     private List<Dromologio> filteredDromologioList=new ArrayList();
     private Dromologio dromologioToInsert=new Dromologio();
     

@@ -29,7 +29,7 @@ import org.hibernate.Session;
 public class EuserManagedBean implements Serializable{
     
     private List<Euser> euserList = new ArrayList();
-    private Euser selectedEuser; //epilogi apo to pinaka me xeraki
+    private Euser selectedEuser; //epilogi apo to pinaka 
     private List<Euser> filteredEuserList=new ArrayList();
     private Euser euserToInsert=new Euser();
 
